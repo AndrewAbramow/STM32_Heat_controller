@@ -1,2 +1,2 @@
 # STM32_PLC
- PLC based on STM32F103
+ PLC (simplified version of TRM148) based on STM32F103 
