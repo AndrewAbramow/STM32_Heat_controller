@@ -22,6 +22,7 @@ public:
 	virtual ~HS42056();
 	void Init();
 	void SevenSegmentUpdate(uint8_t number);
+	void SeparateDigits (uint8_t number);
 	void DisplayNumber(uint8_t number);
 private:
 	// HEX code for digits
@@ -37,7 +38,7 @@ private:
 																				0x67};
 	// D1 - D4 pins:
 	GPIO_TypeDef * displayDGpiox;
-	std::array<uint16_t,4> displayDGpioPin = {	GPIO_PIN_14,
+	std::array<uint16_t,4> displayDGpioPin = {	GPIO_PIN_6,
 																				GPIO_PIN_4,
 																				GPIO_PIN_5,
 																				GPIO_PIN_3};

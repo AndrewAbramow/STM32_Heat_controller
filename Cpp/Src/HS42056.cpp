@@ -24,10 +24,10 @@ void HS42056::Init()
 	}
 
 	HAL_GPIO_WritePin(GPIOB, displayDGpioPin[0] |
-													 displayDGpioPin[3] |
-													 displayDGpioPin[1] |
-													 displayDGpioPin[2],
-													 GPIO_PIN_SET);
+							displayDGpioPin[3] |
+							displayDGpioPin[1] |
+							displayDGpioPin[2],
+							GPIO_PIN_SET);
 }
 
 void HS42056::SevenSegmentUpdate(uint8_t number){
@@ -40,35 +40,37 @@ void HS42056::SevenSegmentUpdate(uint8_t number){
 	}
 }
 
-// I need middle function for
-// highlight the digits of a number
-// HERE \\
+void HS42056::SeparateDigits (uint8_t number)
+{
+	numbers[0] = number/1000;
+	numbers[1] = ((number/100)%10);
+	numbers[2] = ((number/10)%10);
+	numbers[3] = (number%10);
+}
 
 void HS42056::DisplayNumber(uint8_t number)
 {
-	SevenSegmentUpdate(segmentNumber[temp1]);
-		  D1_LOW;
-		  HAL_Delay(7);
-		  D1_HIGH;
+	SeparateDigits (number);
 
-		  SevenSegment_Update(segmentNumber[temp2]);
-		  D2_LOW;
-		  HAL_Delay(7);
-		  D2_HIGH;
+	SevenSegmentUpdate(numbers[0]);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);
+	HAL_Delay(7);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);
 
-		  SevenSegment_Update(segmentNumber[temp3]);
-		  D3_LOW;
-		  HAL_Delay(7);
-		  D3_HIGH;
+	SevenSegmentUpdate(numbers[1]);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_RESET);
+	HAL_Delay(7);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_SET);
 
-		  SevenSegment_Update(segmentNumber[temp4]);
-		  D4_LOW;
-		  HAL_Delay(7);
-		  D4_HIGH;
+	SevenSegmentUpdate(numbers[2]);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, GPIO_PIN_RESET);
+	HAL_Delay(7);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, GPIO_PIN_SET);
 
-		  counter++;
-		  if (counter >= 1000){
-			  counter = 0;
-		  }
-		 HAL_Delay(1000);
+	SevenSegmentUpdate(numbers[3]);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_3, GPIO_PIN_RESET);
+	HAL_Delay(7);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_3, GPIO_PIN_SET);
+
+	HAL_Delay(1000);
 }

@@ -8,8 +8,8 @@
 #include "OnOffRegulator.hpp"
 
 OnOffRegulator::OnOffRegulator(uint8_t targetTemp, uint8_t hysteresis) :
-																_targetTemp(targetTemp),
-																_hysteresis(hysteresis)
+													_targetTemp(targetTemp),
+													_hysteresis(hysteresis)
 {
 	filter = std::make_unique<AdaptiveFilter>();
 	ds18b20 = std::make_unique<DS18B20>();
