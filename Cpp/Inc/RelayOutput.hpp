@@ -19,7 +19,7 @@ public:
 	void Off();
 
 private:
-	GPIO_TypeDef * relayGpiox;
+	GPIO_TypeDef* relayGpiox;
 	uint16_t relayGpioPin;
 };
 
