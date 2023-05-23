@@ -57,6 +57,12 @@ void CppMain();
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define DQ_Pin GPIO_PIN_13
+#define DQ_GPIO_Port GPIOB
+#define CLK_Pin GPIO_PIN_6
+#define CLK_GPIO_Port GPIOB
+#define SDO_Pin GPIO_PIN_7
+#define SDO_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 

@@ -1,22 +1,8 @@
 #include "DS18B20.hpp"
 
-DS18B20::DS18B20()
+DS18B20::DS18B20(TIMER *tim)
 {
-	_tim = new TIM_HandleTypeDef(); // pass first timer
-	HAL_TIM_Base_Start(_tim);
-}
-
-DS18B20::~DS18B20()
-{
-	delete _tim;
-}
-
-void DS18B20::delayUS(uint16_t us)
-{
-	//__disable_irq();
-	_tim->Instance->CNT = 0;			//Set Timer value to 0, the Timer ticks every microsecond and counts up
-	while(_tim->Instance->CNT < us);	//Wait till the set delay time is elapsed
-	//__enable_irq();
+	_tim = tim;
 }
 
 void DS18B20::setDataPin(bool on)
@@ -59,11 +45,12 @@ void DS18B20::startSensor()
 {
 	setPinOUTPUT();
 	setDataPin(false);
-	delayUS(480);
+
+	_tim->delayUS(480);
 	setPinINPUT();
-	delayUS(80);
+	_tim->delayUS(80);
 	HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13);
-	delayUS(400);
+	_tim->delayUS(400);
 }
 
 void DS18B20::writeData(uint8_t data)
@@ -72,21 +59,26 @@ void DS18B20::writeData(uint8_t data)
 
 	for (uint8_t i = 0; i < 8; i++)
 	{
+
 		if (data & (1 << i)) // if the bit is high
 		{
 			// write 1
+
 			setPinOUTPUT();	   // set as output
 			setDataPin(false); // pull the pin LOW
-			delayUS(1);  // wait for 1 us
+			_tim->delayUS(1);  // wait for 1 us
+
 			setPinINPUT();	   // set as input
-			delayUS(60); // wait for 60 us
+			_tim->delayUS(60); // wait for 60 us
 		}
 		else // if the bit is low
 		{
 			// write 0
+
 			setPinOUTPUT();
 			setDataPin(false); // pull the pin LOW
-			delayUS(60); // wait for 60 us
+			_tim->delayUS(60); // wait for 60 us
+
 			setPinINPUT();
 		}
 	}
@@ -100,17 +92,17 @@ uint8_t DS18B20::readData()
 	for (uint8_t i = 0; i < 8; i++)
 	{
 		setPinOUTPUT(); // set as output
-		setDataPin(false); // pull the data pin LOW
-		delayUS(2);  // wait for 2 us
-		setPinINPUT();  // set as input
 
+		setDataPin(false); // pull the data pin LOW
+		_tim->delayUS(2);  // wait for 2 us
+
+		setPinINPUT();							  // set as input
 		if (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13)) // if the pin is HIGH
 		{
 			value |= 1 << i; // read = 1
 		}
-		delayUS(60); // wait for 60 us
+		_tim->delayUS(60); // wait for 60 us
 	}
-
 	return value;
 }
 

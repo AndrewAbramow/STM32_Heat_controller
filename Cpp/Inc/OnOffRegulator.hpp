@@ -34,9 +34,9 @@ public:
 
 
 private:
-	std::unique_ptr<AdaptiveFilter> filter;
-	std::unique_ptr<DS18B20> ds18b20;
-	std::unique_ptr<RelayOutput> relay;
+	//std::unique_ptr<AdaptiveFilter> filter;
+	//std::unique_ptr<DS18B20> ds18b20;
+	//std::unique_ptr<RelayOutput> relay;
 
 	uint8_t _targetTemp;
 	uint8_t _hysteresis;

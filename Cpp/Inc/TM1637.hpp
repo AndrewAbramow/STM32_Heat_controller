@@ -113,11 +113,11 @@ public:
 
 	GPIO_TypeDef* SCLK_SDO_Port = GPIOB;
 	uint16_t SCLK_Pin = GPIO_PIN_6;
-	uint16_t SDO_Pin = GPIO_PIN_7;
+	uint16_t SDo_Pin = GPIO_PIN_7;
 	uint8_t STM2DISPLAY = 0;
 	uint8_t DISPLAY2STM = 1;
 
-	uint8_t displayBuffer[4]{0};
+	uint8_t displayBuffer[4] = {0x7d,0x7d,0x7d,0x7d};
 };
 
 #endif /* TM1637_HPP_ */

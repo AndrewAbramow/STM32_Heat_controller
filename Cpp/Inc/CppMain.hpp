@@ -13,6 +13,9 @@
 #include "TM1637.hpp"
 #include <string>
 
+extern unsigned char KeyboardReadFlag;
+extern TIM_HandleTypeDef htim2;
+
 std::string String2Float(float number);
 void MainCpp();
 

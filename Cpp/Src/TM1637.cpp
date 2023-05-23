@@ -32,16 +32,16 @@ void TM1637::CLKlow()
 
 void TM1637::SDOhigh()
 {
-	HAL_GPIO_WritePin(SCLK_SDO_Port, SDO_Pin, GPIO_PIN_SET);			//SDO high period
-	HAL_GPIO_WritePin(SCLK_SDO_Port, SDO_Pin, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(SCLK_SDO_Port, SDO_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(SCLK_SDO_Port, SDo_Pin, GPIO_PIN_SET);			//SDO high period
+	HAL_GPIO_WritePin(SCLK_SDO_Port, SDo_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(SCLK_SDO_Port, SDo_Pin, GPIO_PIN_SET);
 }
 
 void TM1637::SDOlow()
 {
-	HAL_GPIO_WritePin(SCLK_SDO_Port, SDO_Pin, GPIO_PIN_RESET);			//SDO low period
-	HAL_GPIO_WritePin(SCLK_SDO_Port, SDO_Pin, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(SCLK_SDO_Port, SDO_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(SCLK_SDO_Port, SDo_Pin, GPIO_PIN_RESET);			//SDO low period
+	HAL_GPIO_WritePin(SCLK_SDO_Port, SDo_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(SCLK_SDO_Port, SDo_Pin, GPIO_PIN_RESET);
 }
 
 void TM1637::StartPacket()												//Lower SDO line while CLK line is high

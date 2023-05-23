@@ -11,9 +11,9 @@ OnOffRegulator::OnOffRegulator(uint8_t targetTemp, uint8_t hysteresis) :
 													_targetTemp(targetTemp),
 													_hysteresis(hysteresis)
 {
-	filter = std::make_unique<AdaptiveFilter>();
-	ds18b20 = std::make_unique<DS18B20>();
-	relay = std::make_unique<RelayOutput>();
+	//filter = std::make_unique<AdaptiveFilter>();
+	//ds18b20 = std::make_unique<DS18B20>();
+	//relay = std::make_unique<RelayOutput>();
 }
 OnOffRegulator::~OnOffRegulator() {
 	// TODO Auto-generated destructor stub
@@ -21,7 +21,7 @@ OnOffRegulator::~OnOffRegulator() {
 
 float OnOffRegulator::GetTemperature()
 {
-	return filter->RenewVal(ds18b20->readTemperature());
+	//return filter->RenewVal(ds18b20->readTemperature());
 }
 
 void OnOffRegulator::TemperatureSupport(Mode mode)
@@ -33,14 +33,14 @@ void OnOffRegulator::TemperatureSupport(Mode mode)
 		if ((temp < (_targetTemp - _hysteresis)) && state == OFF)
 		{
 			// Heater ON
-			relay -> On();
+			//relay -> On();
 			state = ON;
 
 		}
 		else if ((temp > (_targetTemp + _hysteresis)) && state == ON)
 		{
 			// Heater OFF
-			relay -> Off();
+			//relay -> Off();
 			state = OFF;
 		}
 	}
@@ -49,13 +49,13 @@ void OnOffRegulator::TemperatureSupport(Mode mode)
 		if ((temp > (_targetTemp + _hysteresis)) && state == OFF)
 		{
 			// Cooler ON
-			relay -> On();
+			//relay -> On();
 			state = ON;
 		}
 		else if ((temp < (_targetTemp - _hysteresis)) && state == ON)
 		{
 			// Cooler OFF
-			relay -> Off();
+			//relay -> Off();
 			state = OFF;
 		}
 	}
