@@ -11,7 +11,10 @@
 #include "main.h"
 #include "OnOffRegulator.hpp"
 #include "TM1637.hpp"
+#include "PIDRegulator.hpp"
 #include <string>
+#include "Timing.hpp"
+#include "DS18B20.hpp"
 
 extern unsigned char KeyboardReadFlag;
 extern TIM_HandleTypeDef htim2;

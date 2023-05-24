@@ -19,10 +19,18 @@ RelayOutput::~RelayOutput() {
 
 void RelayOutput::On()
 {
-	HAL_GPIO_WritePin(relayGpiox, relayGpioPin,GPIO_PIN_SET);
+	if (relayState == RELAY_OFF)
+	{
+		HAL_GPIO_TogglePin(relayGpiox, relayGpioPin);
+		relayState = RELAY_ON;
+	}
 }
 
 void RelayOutput::Off()
 {
-	HAL_GPIO_WritePin(relayGpiox, relayGpioPin,GPIO_PIN_RESET);
+	if (relayState == RELAY_ON)
+	{
+		HAL_GPIO_TogglePin(relayGpiox, relayGpioPin);
+		relayState = RELAY_OFF;
+	}
 }
