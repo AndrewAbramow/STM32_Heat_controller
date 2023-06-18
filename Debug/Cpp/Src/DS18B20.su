@@ -1,0 +1,9 @@
+../Cpp/Src/DS18B20.cpp:3:1:DS18B20::DS18B20(TIMER*)	16	static
+../Cpp/Src/DS18B20.cpp:8:6:void DS18B20::setDataPin(bool)	16	static
+../Cpp/Src/DS18B20.cpp:20:6:void DS18B20::toggleDataPin()	16	static
+../Cpp/Src/DS18B20.cpp:25:6:void DS18B20::setPinOUTPUT()	32	static
+../Cpp/Src/DS18B20.cpp:34:6:void DS18B20::setPinINPUT()	32	static
+../Cpp/Src/DS18B20.cpp:44:6:void DS18B20::startSensor()	16	static
+../Cpp/Src/DS18B20.cpp:56:6:void DS18B20::writeData(uint8_t)	24	static
+../Cpp/Src/DS18B20.cpp:87:9:uint8_t DS18B20::readData()	24	static
+../Cpp/Src/DS18B20.cpp:109:7:float DS18B20::readTemperature()	24	static

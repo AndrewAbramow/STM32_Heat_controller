@@ -10,6 +10,8 @@
 
 #include "main.h"
 #include "OnOffRegulator.hpp"
+#include "AdaptiveFilter.hpp"
+#include "RelayOutput.hpp"
 #include "TM1637.hpp"
 #include "PIDRegulator.hpp"
 #include <string>

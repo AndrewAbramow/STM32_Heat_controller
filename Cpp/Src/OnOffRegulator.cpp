@@ -34,7 +34,7 @@ void OnOffRegulator::TemperatureSupport(RegulatorMode regulatorMode)
 
 	if (regulatorMode == HEATER)
 	{
-		if ((temp < (_targetTemp - _hysteresis))
+		if ((temp <= (_targetTemp - _hysteresis))
 				&& regulatorState == REGULATOR_OFF)
 		{
 			// Heater ON
@@ -42,7 +42,7 @@ void OnOffRegulator::TemperatureSupport(RegulatorMode regulatorMode)
 			regulatorState = REGULATOR_ON;
 
 		}
-		else if ((temp > (_targetTemp + _hysteresis))
+		else if ((temp >= (_targetTemp + _hysteresis))
 				&& regulatorState == REGULATOR_ON)
 		{
 			// Heater OFF

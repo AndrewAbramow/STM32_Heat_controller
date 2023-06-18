@@ -1,0 +1,6 @@
+../Core/Src/circular_buffer.c:10:5:CBuff_GetSaveCharCount	32	static
+../Core/Src/circular_buffer.c:29:6:CBuff_Init	24	static
+../Core/Src/circular_buffer.c:38:6:CBuff_AddChar	16	static
+../Core/Src/circular_buffer.c:53:6:CBuff_GetChar	24	static
+../Core/Src/circular_buffer.c:71:6:CBuff_ReadChar	24	static
+../Core/Src/circular_buffer.c:88:6:CBuff_IsEmpty	24	static

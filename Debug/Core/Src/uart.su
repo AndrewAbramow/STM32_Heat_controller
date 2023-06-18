@@ -1,0 +1,6 @@
+../Core/Src/uart.c:17:6:UART_WriteByte	16	static
+../Core/Src/uart.c:22:6:UART_WriteString	24	static
+../Core/Src/uart.c:30:6:UART_StartTransmit	8	static
+../Core/Src/uart.c:39:6:UART_Recive	8	static
+../Core/Src/uart.c:47:6:UART_Transmit	8	static
+../Core/Src/uart.c:60:6:UART_Init	8	static
