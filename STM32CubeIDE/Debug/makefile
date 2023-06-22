@@ -61,8 +61,8 @@ all: main-build
 main-build: CppTemplate.elf secondary-outputs
 
 # Tool invocations
-CppTemplate.elf CppTemplate.map: $(OBJS) $(USER_OBJS) G:\STM32CubeIDE\STM32TemperatureRegulator\STM32CubeIDE\STM32F103C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "CppTemplate.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"G:\STM32CubeIDE\STM32TemperatureRegulator\STM32CubeIDE\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CppTemplate.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+CppTemplate.elf CppTemplate.map: $(OBJS) $(USER_OBJS) C:\Users\Andrew\Documents\MyProjects\STM32_PLC\STM32CubeIDE\STM32F103C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "CppTemplate.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\Andrew\Documents\MyProjects\STM32_PLC\STM32CubeIDE\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CppTemplate.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

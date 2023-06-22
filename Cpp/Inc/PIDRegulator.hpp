@@ -17,40 +17,54 @@
 
 class PID_Regulator {
 public:
-	PID_Regulator(  uint8_t targetTemp,
+	PID_Regulator(  unsigned char targetTemp,
+					unsigned char period,
 					std::shared_ptr<AdaptiveFilter>filter,
 					std::shared_ptr<DS18B20>ds18b20,
 					std::shared_ptr<RelayOutput>relay);
 	virtual ~PID_Regulator();
 
 	float GetTemperature();
-	int GetNewWidth (float input); // PWM
-	int TemperatureSupport(float input);
+	int GetNewWidth (float input);
+	void TemperatureSupport(float current_temp);
 	float Clamp(float value, float min, float max);
 
 private:
 
-	uint8_t _targetTemp = 0;
+	enum cycle {
+		kOff,
+		kOn
+	};
 
-	std::shared_ptr<AdaptiveFilter>_filter;
-	std::shared_ptr<DS18B20>_ds18b20;
-	std::shared_ptr<RelayOutput>_relay;
+	enum stage {
+		kCoolDown,
+		kHeatUp
+	};
 
-	int dt = 0;
+	unsigned char targetTemp_ = 0;
+
+	std::shared_ptr<AdaptiveFilter>filter_;
+	std::shared_ptr<DS18B20>ds18b20_;
+	std::shared_ptr<RelayOutput>relay_;
+
+	int dt = 1;
 	int minOut = 0;
-	int maxOut = 0;
+	int maxOut = 10;
 
-	float kp = 1;
-	float ki = 1;
-	float kd = 1;
-	float setpoint;
-	float integral = 0;
-	float prevErr = 0;
+	float kp = 1.8;
+	float ki = 3.6;
+	float kd = 0.225;
+	float integral = 1;
+	float prevErr = 1;
 
-	int tickCount = 0;
+	unsigned char period_;
+	unsigned char cool_down_;
+	unsigned char heat_up_;
 
-	bool state = false;
+	//bool state = false;
 
+	cycle cycle_;
+	stage stage_;
 };
 
 #endif /* SRC_PIDREGULAOR_HPP_ */

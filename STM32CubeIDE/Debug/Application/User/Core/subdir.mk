@@ -5,9 +5,9 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-G:/STM32CubeIDE/STM32TemperatureRegulator/Core/Src/main.c \
-G:/STM32CubeIDE/STM32TemperatureRegulator/Core/Src/stm32f1xx_hal_msp.c \
-G:/STM32CubeIDE/STM32TemperatureRegulator/Core/Src/stm32f1xx_it.c \
+C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Core/Src/main.c \
+C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Core/Src/stm32f1xx_hal_msp.c \
+C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Core/Src/stm32f1xx_it.c \
 ../Application/User/Core/syscalls.c \
 ../Application/User/Core/sysmem.c 
 
@@ -27,11 +27,11 @@ C_DEPS += \
 
 
 # Each subdirectory must supply rules for building sources it contributes
-Application/User/Core/main.o: G:/STM32CubeIDE/STM32TemperatureRegulator/Core/Src/main.c Application/User/Core/subdir.mk
+Application/User/Core/main.o: C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Core/Src/main.c Application/User/Core/subdir.mk
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../../Core/Inc -I../../Drivers/STM32F1xx_HAL_Driver/Inc -I../../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@"
-Application/User/Core/stm32f1xx_hal_msp.o: G:/STM32CubeIDE/STM32TemperatureRegulator/Core/Src/stm32f1xx_hal_msp.c Application/User/Core/subdir.mk
+Application/User/Core/stm32f1xx_hal_msp.o: C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Core/Src/stm32f1xx_hal_msp.c Application/User/Core/subdir.mk
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../../Core/Inc -I../../Drivers/STM32F1xx_HAL_Driver/Inc -I../../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@"
-Application/User/Core/stm32f1xx_it.o: G:/STM32CubeIDE/STM32TemperatureRegulator/Core/Src/stm32f1xx_it.c Application/User/Core/subdir.mk
+Application/User/Core/stm32f1xx_it.o: C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Core/Src/stm32f1xx_it.c Application/User/Core/subdir.mk
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../../Core/Inc -I../../Drivers/STM32F1xx_HAL_Driver/Inc -I../../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@"
 Application/User/Core/%.o Application/User/Core/%.su: ../Application/User/Core/%.c Application/User/Core/subdir.mk
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../../Core/Inc -I../../Drivers/STM32F1xx_HAL_Driver/Inc -I../../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@"

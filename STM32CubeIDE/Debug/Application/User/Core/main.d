@@ -1,5 +1,5 @@
 Application/User/Core/main.o: \
- G:/STM32CubeIDE/STM32TemperatureRegulator/Core/Src/main.c \
+ C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Core/Src/main.c \
  ../../Core/Inc/main.h \
  ../../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../../Core/Inc/stm32f1xx_hal_conf.h \

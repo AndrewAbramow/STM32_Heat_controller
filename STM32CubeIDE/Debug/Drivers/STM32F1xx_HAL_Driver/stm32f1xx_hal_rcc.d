@@ -1,5 +1,5 @@
 Drivers/STM32F1xx_HAL_Driver/stm32f1xx_hal_rcc.o: \
- G:/STM32CubeIDE/STM32TemperatureRegulator/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c \
+ C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c \
  ../../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../../Core/Inc/stm32f1xx_hal_conf.h \
  ../../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \

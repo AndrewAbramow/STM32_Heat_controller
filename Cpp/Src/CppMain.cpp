@@ -18,9 +18,8 @@ void CppMain()
 	// initialize relay output device
 	std::shared_ptr<RelayOutput> relay = std::make_shared<RelayOutput>();
 	// initialize controller
-	OnOffRegulator regulator(30, 1, filter, temp, relay);
-	//DS18B20 thermometer(&htim2);
-	//PID_Regulator reg ();
+	//OnOffRegulator regulator(30, 1, filter, temp, relay);
+	PID_Regulator regulator(30, 10, filter, temp, relay);
 
 
 	while(true)
@@ -50,7 +49,7 @@ void CppMain()
 			display.DisplayHandle(6, temperature_str);
 
 			// correct temperature
-			regulator.TemperatureSupport(HEATER);
+			regulator.TemperatureSupport(t);
 
 			//auto currentTemp = thermometer.readTemperature();
 			KeyboardReadFlag = 0;
