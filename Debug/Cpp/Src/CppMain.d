@@ -24,10 +24,10 @@ Cpp/Src/CppMain.o: ../Cpp/Src/CppMain.cpp \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
- C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/OnOffRegulator.hpp \
  C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/AdaptiveFilter.hpp \
  C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/DS18B20.hpp \
  C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/Timing.hpp \
+ C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/OnOffRegulator.hpp \
  C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/RelayOutput.hpp \
  C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/TM1637.hpp \
  C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/PIDRegulator.hpp
@@ -57,10 +57,10 @@ C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/CppMain.hpp:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
-C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/OnOffRegulator.hpp:
 C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/AdaptiveFilter.hpp:
 C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/DS18B20.hpp:
 C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/Timing.hpp:
+C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/OnOffRegulator.hpp:
 C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/RelayOutput.hpp:
 C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/TM1637.hpp:
 C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/PIDRegulator.hpp:

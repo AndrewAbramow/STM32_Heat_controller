@@ -2,13 +2,12 @@
 #include <stdint.h>
 #include "stm32f1xx_hal.h"
 
-class TIMER
-{
-	public:
-		TIMER(TIM_HandleTypeDef* tim);
-		void delayUS(uint16_t us);
-	private:
-		TIM_HandleTypeDef* _tim;
+class TIMER {
+ public:
+  TIMER(TIM_HandleTypeDef* tim);
+  void delayUS(uint16_t us);
+ private:
+  TIM_HandleTypeDef* _tim;
 };
 
 /*Now, let’s start the cubeIDE, and open the clock setup tab.

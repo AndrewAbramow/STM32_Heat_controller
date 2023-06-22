@@ -10,25 +10,21 @@
 
 #include "stm32f1xx_hal.h"
 
-enum RelayState
-{
-	RELAY_ON,
-	RELAY_OFF
+enum RelayState {
+	kRelayOn,
+	kRelayOff
 };
 
 class RelayOutput {
-public:
-	RelayOutput();
-	virtual ~RelayOutput();
-
-	void On();
-	void Off();
-
-private:
-	GPIO_TypeDef* relayGpiox;
-	uint16_t relayGpioPin;
-
-	RelayState relayState;
+ public:
+                RelayOutput();
+  virtual       ~RelayOutput();
+  void          On();
+  void          Off();
+ private:
+  GPIO_TypeDef* relay_gpiox_;
+  uint16_t      relay_gpio_pin_;
+  RelayState    relay_state_;
 };
 
 #endif /* OUTPUTDEVICE_HPP_ */

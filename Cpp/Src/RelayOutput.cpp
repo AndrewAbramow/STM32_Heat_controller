@@ -9,29 +9,25 @@
 
 RelayOutput::RelayOutput() {
 
-	relayGpiox = GPIOB;
-	relayGpioPin = GPIO_PIN_9;
-	relayState = RELAY_OFF;
+	relay_gpiox_ = GPIOB;
+	relay_gpio_pin_ = GPIO_PIN_9;
+	relay_state_ = kRelayOff;
 }
 
 RelayOutput::~RelayOutput() {
 	// TODO Auto-generated destructor stub
 }
 
-void RelayOutput::On()
-{
-	if (relayState == RELAY_OFF)
-	{
-		HAL_GPIO_WritePin(relayGpiox, relayGpioPin, GPIO_PIN_SET);
-		relayState = RELAY_ON;
+void RelayOutput::On() {
+	if (relay_state_ == kRelayOff) {
+		HAL_GPIO_WritePin(relay_gpiox_, relay_gpio_pin_, GPIO_PIN_SET);
+		relay_state_ = kRelayOn;
 	}
 }
 
-void RelayOutput::Off()
-{
-	if (relayState == RELAY_ON)
-	{
-		HAL_GPIO_WritePin(relayGpiox, relayGpioPin, GPIO_PIN_RESET);
-		relayState = RELAY_OFF;
+void RelayOutput::Off() {
+	if (relay_state_ == kRelayOn) {
+		HAL_GPIO_WritePin(relay_gpiox_, relay_gpio_pin_, GPIO_PIN_RESET);
+		relay_state_ = kRelayOff;
 	}
 }

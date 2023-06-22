@@ -7,66 +7,52 @@
 
 #include "OnOffRegulator.hpp"
 
-OnOffRegulator::OnOffRegulator(	uint8_t targetTemp,
-								uint8_t hysteresis,
-								std::shared_ptr<AdaptiveFilter>filter,
-								std::shared_ptr<DS18B20>ds18b20,
-								std::shared_ptr<RelayOutput>relay)
-								:
-								_targetTemp(targetTemp),
-								_hysteresis(hysteresis),
-								_filter(filter),
-								_ds18b20(ds18b20),
-								_relay(relay) {}
+OnOffRegulator::OnOffRegulator(	uint8_t target_temp,
+    uint8_t hysteresis,
+    std::shared_ptr<AdaptiveFilter>filter,
+    std::shared_ptr<DS18B20>ds18b20,
+    std::shared_ptr<RelayOutput>relay)
+    : target_temp_(target_temp),
+    hysteresis_(hysteresis),
+    filter_(filter),
+    ds18b20_(ds18b20),
+    relay_(relay) {}
 
 OnOffRegulator::~OnOffRegulator() {
 	// TODO Auto-generated destructor stub
 }
 
-float OnOffRegulator::GetTemperature()
-{
-	return _filter->RenewVal(_ds18b20->readTemperature());
+float OnOffRegulator::GetTemperature() {
+	return filter_->RenewVal(ds18b20_->readTemperature());
 }
 
-void OnOffRegulator::TemperatureSupport(RegulatorMode regulatorMode)
-{
-	uint8_t temp = GetTemperature();
-
-	if (regulatorMode == HEATER)
-	{
-		if ((temp <= (_targetTemp - _hysteresis))
-				&& regulatorState == REGULATOR_OFF)
-		{
-			// Heater ON
-			_relay -> On();
-			regulatorState = REGULATOR_ON;
-
-		}
-		else if ((temp >= (_targetTemp + _hysteresis))
-				&& regulatorState == REGULATOR_ON)
-		{
-			// Heater OFF
-			_relay -> Off();
-			regulatorState = REGULATOR_OFF;
-		}
+void OnOffRegulator::TemperatureSupport(RegulatorMode regulator_mode) {
+  uint8_t temp = GetTemperature();
+  if (regulator_mode == kHeater) {
+	if ((temp <= (target_temp_ - hysteresis_))
+	    && regulator_state_ == kRegulatorOff) {
+		// Heater ON
+		relay_ -> On();
+		regulator_state_ = kRegulatorOn;
+	} else if ((temp >= (target_temp_ + hysteresis_))
+		&& regulator_state_ == kRegulatorOn) {
+		// Heater OFF
+		relay_ -> Off();
+		regulator_state_ = kRegulatorOff;
 	}
-	else if (regulatorMode == COOLER)
-	{
-		if ((temp > (_targetTemp + _hysteresis))
-				&& regulatorState == REGULATOR_OFF)
-		{
-			// Cooler ON
-			_relay -> On();
-			regulatorState = REGULATOR_ON;
-		}
-		else if ((temp < (_targetTemp - _hysteresis))
-				&& regulatorState == REGULATOR_ON)
-		{
-			// Cooler OFF
-			_relay -> Off();
-			regulatorState = REGULATOR_OFF;
-		}
-	}
+  } else if (regulator_mode == kCooler)	{
+    if ((temp > (target_temp_ + hysteresis_))
+		&& regulator_state_ == kRegulatorOff) {
+		// Cooler ON
+		relay_ -> On();
+		regulator_state_ = kRegulatorOn;
+    } else if ((temp < (target_temp_ - hysteresis_))
+		&& regulator_state_ == kRegulatorOn) {
+		// Cooler OFF
+		relay_ -> Off();
+		regulator_state_ = kRegulatorOff;
+    }
+  }
 }
 
 

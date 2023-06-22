@@ -10,25 +10,25 @@ c:\st\stm32cubeide_1.11.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.external
 ../Cpp/Src/TM1637.cpp:15:1:TM1637::~TM1637()	16	static
 ../Cpp/Src/TM1637.cpp:15:1:virtual TM1637::~TM1637()	16	static
 ../Cpp/Src/TM1637.cpp:19:6:void TM1637::CLKhigh()	16	static
-../Cpp/Src/TM1637.cpp:26:6:void TM1637::CLKlow()	16	static
-../Cpp/Src/TM1637.cpp:33:6:void TM1637::SDOhigh()	16	static
-../Cpp/Src/TM1637.cpp:40:6:void TM1637::SDOlow()	16	static
-../Cpp/Src/TM1637.cpp:47:6:void TM1637::StartPacket()	16	static
-../Cpp/Src/TM1637.cpp:57:6:void TM1637::EndPacket()	16	static
-../Cpp/Src/TM1637.cpp:66:6:void TM1637::DataOut(uint8_t*)	32	static
-../Cpp/Src/TM1637.cpp:83:6:void TM1637::TxCommand(uint8_t*)	32	static
-../Cpp/Src/TM1637.cpp:102:6:void TM1637::TxData(uint8_t*, uint8_t)	40	static
-../Cpp/Src/TM1637.cpp:120:6:void TM1637::Initialize(uint8_t)	32	static
-../Cpp/Src/TM1637.cpp:139:6:void TM1637::ACKcheck()	16	static
-../Cpp/Src/TM1637.cpp:148:6:void TM1637::DisplayClear()	24	static
-../Cpp/Src/TM1637.cpp:161:9:uint8_t TM1637::DisplayHandle(uint8_t, std::string)	56	static
-../Cpp/Src/TM1637.cpp:184:14:TM1637Status TM1637::SetBrighness(uint8_t)	32	static
-../Cpp/Src/TM1637.cpp:211:40:TM1637::FillBuffer(std::string)::<lambda(char&)>	16	static
+../Cpp/Src/TM1637.cpp:25:6:void TM1637::CLKlow()	16	static
+../Cpp/Src/TM1637.cpp:31:6:void TM1637::SDOhigh()	16	static
+../Cpp/Src/TM1637.cpp:37:6:void TM1637::SDOlow()	16	static
+../Cpp/Src/TM1637.cpp:43:6:void TM1637::StartPacket()	16	static
+../Cpp/Src/TM1637.cpp:50:6:void TM1637::EndPacket()	16	static
+../Cpp/Src/TM1637.cpp:57:6:void TM1637::DataOut(uint8_t*)	32	static
+../Cpp/Src/TM1637.cpp:69:6:void TM1637::TxCommand(uint8_t*)	32	static
+../Cpp/Src/TM1637.cpp:84:6:void TM1637::TxData(uint8_t*, uint8_t)	40	static
+../Cpp/Src/TM1637.cpp:99:6:void TM1637::Initialize(uint8_t)	32	static
+../Cpp/Src/TM1637.cpp:117:6:void TM1637::ACKcheck()	16	static
+../Cpp/Src/TM1637.cpp:125:6:void TM1637::DisplayClear()	24	static
+../Cpp/Src/TM1637.cpp:137:9:uint8_t TM1637::DisplayHandle(uint8_t, std::string)	56	static
+../Cpp/Src/TM1637.cpp:158:14:TM1637Status TM1637::SetBrighness(uint8_t)	32	static
+../Cpp/Src/TM1637.cpp:182:40:TM1637::FillBuffer(std::string)::<lambda(char&)>	16	static
 c:\st\stm32cubeide_1.11.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.100.202210260954\tools\arm-none-eabi\include\c++\10.3.1\bits\stl_iterator.h:1056:7:constexpr const _Iterator& __gnu_cxx::__normal_iterator<_Iterator, _Container>::base() const [with _Iterator = char*; _Container = std::__cxx11::basic_string<char>]	16	static
 c:\st\stm32cubeide_1.11.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.100.202210260954\tools\arm-none-eabi\include\c++\10.3.1\bits\stl_iterator.h:1003:7:constexpr __gnu_cxx::__normal_iterator<_Iterator, _Container>& __gnu_cxx::__normal_iterator<_Iterator, _Container>::operator++() [with _Iterator = char*; _Container = std::__cxx11::basic_string<char>]	16	static
 c:\st\stm32cubeide_1.11.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.100.202210260954\tools\arm-none-eabi\include\c++\10.3.1\bits\stl_iterator.h:1073:5:constexpr bool __gnu_cxx::operator==(const __gnu_cxx::__normal_iterator<_IteratorL, _Container>&, const __gnu_cxx::__normal_iterator<_IteratorR, _Container>&) [with _IteratorL = char*; _IteratorR = char*; _Container = std::__cxx11::basic_string<char>]	24	static
 c:\st\stm32cubeide_1.11.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.100.202210260954\tools\arm-none-eabi\include\c++\10.3.1\bits\stl_algo.h:3838:5:constexpr _Funct std::for_each(_IIter, _IIter, _Funct) [with _IIter = __gnu_cxx::__normal_iterator<char*, std::__cxx11::basic_string<char> >; _Funct = TM1637::FillBuffer(std::string)::<lambda(char&)>]	24	static
-../Cpp/Src/TM1637.cpp:208:6:void TM1637::FillBuffer(std::string)	56	static
+../Cpp/Src/TM1637.cpp:180:6:void TM1637::FillBuffer(std::string)	56	static
 c:\st\stm32cubeide_1.11.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.100.202210260954\tools\arm-none-eabi\include\c++\10.3.1\bits\stl_algobase.h:560:5:constexpr _OI std::copy(_II, _II, _OI) [with _II = const char*; _OI = char*]	32	static
 c:\st\stm32cubeide_1.11.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.100.202210260954\tools\arm-none-eabi\include\c++\10.3.1\bits\char_traits.h:212:5:static constexpr __gnu_cxx::char_traits<_CharT>::char_type* __gnu_cxx::char_traits<_CharT>::copy(__gnu_cxx::char_traits<_CharT>::char_type*, const char_type*, std::size_t) [with _CharT = char]	24	static
 c:\st\stm32cubeide_1.11.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.100.202210260954\tools\arm-none-eabi\include\c++\10.3.1\bits\basic_string.h:158:14:constexpr std::__cxx11::basic_string<char>::_Alloc_hider::~_Alloc_hider()	16	static

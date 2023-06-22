@@ -11,15 +11,14 @@
 #include "math.h"
 
 class AdaptiveFilter {
-public:
-	AdaptiveFilter();
-	virtual ~AdaptiveFilter();
+ public:
+	        AdaptiveFilter();
+  virtual   ~AdaptiveFilter();
 
-	float RenewVal(float newVal);
-
-private:
-	float currentVal;
-	float k;
+  float     RenewVal(float newVal);
+ private:
+  float     current_val;
+  float     k;
 };
 
 #endif /* DIGITALFILTER_HPP_ */

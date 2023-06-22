@@ -27,21 +27,21 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000029  00000000  00000000  00020074  2**0
                   CONTENTS, READONLY
- 12 .debug_info   00036726  00000000  00000000  0002009d  2**0
+ 12 .debug_info   0003672e  00000000  00000000  0002009d  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 00004d5d  00000000  00000000  000567c3  2**0
+ 13 .debug_abbrev 00004d5d  00000000  00000000  000567cb  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 00001b08  00000000  00000000  0005b520  2**3
+ 14 .debug_aranges 00001b08  00000000  00000000  0005b528  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_ranges 000019f8  00000000  00000000  0005d028  2**3
+ 15 .debug_ranges 000019f8  00000000  00000000  0005d030  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_line   0000f7ae  00000000  00000000  0005ea20  2**0
+ 16 .debug_line   0000f7a7  00000000  00000000  0005ea28  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_str    0001df2c  00000000  00000000  0006e1ce  2**0
+ 17 .debug_str    0001df5b  00000000  00000000  0006e1cf  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .comment      00000050  00000000  00000000  0008c0fa  2**0
+ 18 .comment      00000050  00000000  00000000  0008c12a  2**0
                   CONTENTS, READONLY
- 19 .debug_frame  000083ac  00000000  00000000  0008c14c  2**2
+ 19 .debug_frame  000083ac  00000000  00000000  0008c17c  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -2459,11 +2459,11 @@ AdaptiveFilter::AdaptiveFilter() {
  80014f4:	4a08      	ldr	r2, [pc, #32]	; (8001518 <_ZN14AdaptiveFilterC1Ev+0x2c>)
  80014f6:	687b      	ldr	r3, [r7, #4]
  80014f8:	601a      	str	r2, [r3, #0]
-	currentVal = 0;
+	current_val = 0;
  80014fa:	687b      	ldr	r3, [r7, #4]
  80014fc:	f04f 0200 	mov.w	r2, #0
  8001500:	605a      	str	r2, [r3, #4]
-	k = 1;
+	k           = 1;
  8001502:	687b      	ldr	r3, [r7, #4]
  8001504:	f04f 527e 	mov.w	r2, #1065353216	; 0x3f800000
  8001508:	609a      	str	r2, [r3, #8]
@@ -9139,13 +9139,12 @@ void CppMain()
 080040a6 <_ZN7DS18B20C1EP5TIMER>:
 #include "DS18B20.hpp"
 
-DS18B20::DS18B20(TIMER *tim)
+DS18B20::DS18B20(TIMER *tim) {
  80040a6:	b480      	push	{r7}
  80040a8:	b083      	sub	sp, #12
  80040aa:	af00      	add	r7, sp, #0
  80040ac:	6078      	str	r0, [r7, #4]
  80040ae:	6039      	str	r1, [r7, #0]
-{
 	_tim = tim;
  80040b0:	687b      	ldr	r3, [r7, #4]
  80040b2:	683a      	ldr	r2, [r7, #0]
@@ -9169,19 +9168,16 @@ void DS18B20::setDataPin(bool on)
  80040ca:	6078      	str	r0, [r7, #4]
  80040cc:	460b      	mov	r3, r1
  80040ce:	70fb      	strb	r3, [r7, #3]
-	if (on)
+	if (on) {
  80040d0:	78fb      	ldrb	r3, [r7, #3]
  80040d2:	2b00      	cmp	r3, #0
  80040d4:	d006      	beq.n	80040e4 <_ZN7DS18B2010setDataPinEb+0x20>
-	{
 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, GPIO_PIN_SET);
  80040d6:	2201      	movs	r2, #1
  80040d8:	f44f 5100 	mov.w	r1, #8192	; 0x2000
  80040dc:	4806      	ldr	r0, [pc, #24]	; (80040f8 <_ZN7DS18B2010setDataPinEb+0x34>)
  80040de:	f002 fb84 	bl	80067ea <HAL_GPIO_WritePin>
-	}
-	else
-	{
+	} else {
 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, GPIO_PIN_RESET);
 	}
 }
@@ -9199,12 +9195,12 @@ void DS18B20::setDataPin(bool on)
  80040f8:	40010c00 	.word	0x40010c00
 
 080040fc <_ZN7DS18B2012setPinOUTPUTEv>:
-{
+
+void DS18B20::toggleDataPin() {
 	HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_13);
 }
 
-void DS18B20::setPinOUTPUT()
-{
+void DS18B20::setPinOUTPUT() {
  80040fc:	b580      	push	{r7, lr}
  80040fe:	b086      	sub	sp, #24
  8004100:	af00      	add	r7, sp, #0
@@ -9239,8 +9235,7 @@ void DS18B20::setPinOUTPUT()
 
 08004138 <_ZN7DS18B2011setPinINPUTEv>:
 
-void DS18B20::setPinINPUT()
-{
+void DS18B20::setPinINPUT() {
  8004138:	b580      	push	{r7, lr}
  800413a:	b086      	sub	sp, #24
  800413c:	af00      	add	r7, sp, #0
@@ -9278,8 +9273,7 @@ void DS18B20::setPinINPUT()
 
 08004178 <_ZN7DS18B2011startSensorEv>:
 
-void DS18B20::startSensor()
-{
+void DS18B20::startSensor() {
  8004178:	b580      	push	{r7, lr}
  800417a:	b082      	sub	sp, #8
  800417c:	af00      	add	r7, sp, #0
@@ -9291,7 +9285,6 @@ void DS18B20::startSensor()
  8004186:	2100      	movs	r1, #0
  8004188:	6878      	ldr	r0, [r7, #4]
  800418a:	f7ff ff9b 	bl	80040c4 <_ZN7DS18B2010setDataPinEb>
-
 	_tim->delayUS(480);
  800418e:	687b      	ldr	r3, [r7, #4]
  8004190:	681b      	ldr	r3, [r3, #0]
@@ -9327,8 +9320,7 @@ void DS18B20::startSensor()
 
 080041d4 <_ZN7DS18B209writeDataEh>:
 
-void DS18B20::writeData(uint8_t data)
-{
+void DS18B20::writeData(uint8_t data) {
  80041d4:	b580      	push	{r7, lr}
  80041d6:	b084      	sub	sp, #16
  80041d8:	af00      	add	r7, sp, #0
@@ -9339,71 +9331,62 @@ void DS18B20::writeData(uint8_t data)
  80041e0:	6878      	ldr	r0, [r7, #4]
  80041e2:	f7ff ff8b 	bl	80040fc <_ZN7DS18B2012setPinOUTPUTEv>
 
-	for (uint8_t i = 0; i < 8; i++)
+	for (uint8_t i = 0; i < 8; i++) {
  80041e6:	2300      	movs	r3, #0
  80041e8:	73fb      	strb	r3, [r7, #15]
  80041ea:	7bfb      	ldrb	r3, [r7, #15]
  80041ec:	2b07      	cmp	r3, #7
  80041ee:	d832      	bhi.n	8004256 <_ZN7DS18B209writeDataEh+0x82>
-	{
-
-		if (data & (1 << i)) // if the bit is high
+		if (data & (1 << i)) {  // if the bit is high
  80041f0:	78fa      	ldrb	r2, [r7, #3]
  80041f2:	7bfb      	ldrb	r3, [r7, #15]
  80041f4:	fa42 f303 	asr.w	r3, r2, r3
  80041f8:	f003 0301 	and.w	r3, r3, #1
  80041fc:	2b00      	cmp	r3, #0
  80041fe:	d016      	beq.n	800422e <_ZN7DS18B209writeDataEh+0x5a>
-		{
 			// write 1
-
-			setPinOUTPUT();	   // set as output
+			setPinOUTPUT();	    // set as output
  8004200:	6878      	ldr	r0, [r7, #4]
  8004202:	f7ff ff7b 	bl	80040fc <_ZN7DS18B2012setPinOUTPUTEv>
-			setDataPin(false); // pull the pin LOW
+			setDataPin(false);  // pull the pin LOW
  8004206:	2100      	movs	r1, #0
  8004208:	6878      	ldr	r0, [r7, #4]
  800420a:	f7ff ff5b 	bl	80040c4 <_ZN7DS18B2010setDataPinEb>
-			_tim->delayUS(1);  // wait for 1 us
+			_tim->delayUS(1);   // wait for 1 us
  800420e:	687b      	ldr	r3, [r7, #4]
  8004210:	681b      	ldr	r3, [r3, #0]
  8004212:	2101      	movs	r1, #1
  8004214:	4618      	mov	r0, r3
  8004216:	f001 ff9b 	bl	8006150 <_ZN5TIMER7delayUSEt>
-
-			setPinINPUT();	   // set as input
+			setPinINPUT();	    // set as input
  800421a:	6878      	ldr	r0, [r7, #4]
  800421c:	f7ff ff8c 	bl	8004138 <_ZN7DS18B2011setPinINPUTEv>
-			_tim->delayUS(60); // wait for 60 us
+			_tim->delayUS(60);  // wait for 60 us
  8004220:	687b      	ldr	r3, [r7, #4]
  8004222:	681b      	ldr	r3, [r3, #0]
  8004224:	213c      	movs	r1, #60	; 0x3c
  8004226:	4618      	mov	r0, r3
  8004228:	f001 ff92 	bl	8006150 <_ZN5TIMER7delayUSEt>
  800422c:	e00f      	b.n	800424e <_ZN7DS18B209writeDataEh+0x7a>
-		}
-		else // if the bit is low
-		{
+		} else {                // if the bit is low
 			// write 0
-
 			setPinOUTPUT();
  800422e:	6878      	ldr	r0, [r7, #4]
  8004230:	f7ff ff64 	bl	80040fc <_ZN7DS18B2012setPinOUTPUTEv>
-			setDataPin(false); // pull the pin LOW
+			setDataPin(false);  // pull the pin LOW
  8004234:	2100      	movs	r1, #0
  8004236:	6878      	ldr	r0, [r7, #4]
  8004238:	f7ff ff44 	bl	80040c4 <_ZN7DS18B2010setDataPinEb>
-			_tim->delayUS(60); // wait for 60 us
+			_tim->delayUS(60);  // wait for 60 us
  800423c:	687b      	ldr	r3, [r7, #4]
  800423e:	681b      	ldr	r3, [r3, #0]
  8004240:	213c      	movs	r1, #60	; 0x3c
  8004242:	4618      	mov	r0, r3
  8004244:	f001 ff84 	bl	8006150 <_ZN5TIMER7delayUSEt>
-
 			setPinINPUT();
  8004248:	6878      	ldr	r0, [r7, #4]
  800424a:	f7ff ff75 	bl	8004138 <_ZN7DS18B2011setPinINPUTEv>
-	for (uint8_t i = 0; i < 8; i++)
+	for (uint8_t i = 0; i < 8; i++) {
  800424e:	7bfb      	ldrb	r3, [r7, #15]
  8004250:	3301      	adds	r3, #1
  8004252:	73fb      	strb	r3, [r7, #15]
@@ -9419,8 +9402,7 @@ void DS18B20::writeData(uint8_t data)
 
 08004260 <_ZN7DS18B208readDataEv>:
 
-uint8_t DS18B20::readData()
-{
+uint8_t DS18B20::readData() {
  8004260:	b580      	push	{r7, lr}
  8004262:	b084      	sub	sp, #16
  8004264:	af00      	add	r7, sp, #0
@@ -9431,33 +9413,29 @@ uint8_t DS18B20::readData()
 	setPinINPUT();
  800426c:	6878      	ldr	r0, [r7, #4]
  800426e:	f7ff ff63 	bl	8004138 <_ZN7DS18B2011setPinINPUTEv>
-
-	for (uint8_t i = 0; i < 8; i++)
+	for (uint8_t i = 0; i < 8; i++) {
  8004272:	2300      	movs	r3, #0
  8004274:	73bb      	strb	r3, [r7, #14]
  8004276:	7bbb      	ldrb	r3, [r7, #14]
  8004278:	2b07      	cmp	r3, #7
  800427a:	d830      	bhi.n	80042de <_ZN7DS18B208readDataEv+0x7e>
-	{
-		setPinOUTPUT(); // set as output
+		setPinOUTPUT();                              // set as output
  800427c:	6878      	ldr	r0, [r7, #4]
  800427e:	f7ff ff3d 	bl	80040fc <_ZN7DS18B2012setPinOUTPUTEv>
-
-		setDataPin(false); // pull the data pin LOW
+		setDataPin(false);                           // pull the data pin LOW
  8004282:	2100      	movs	r1, #0
  8004284:	6878      	ldr	r0, [r7, #4]
  8004286:	f7ff ff1d 	bl	80040c4 <_ZN7DS18B2010setDataPinEb>
-		_tim->delayUS(2);  // wait for 2 us
+		_tim->delayUS(2);                            // wait for 2 us
  800428a:	687b      	ldr	r3, [r7, #4]
  800428c:	681b      	ldr	r3, [r3, #0]
  800428e:	2102      	movs	r1, #2
  8004290:	4618      	mov	r0, r3
  8004292:	f001 ff5d 	bl	8006150 <_ZN5TIMER7delayUSEt>
-
-		setPinINPUT();							  // set as input
+		setPinINPUT();							     // set as input
  8004296:	6878      	ldr	r0, [r7, #4]
  8004298:	f7ff ff4e 	bl	8004138 <_ZN7DS18B2011setPinINPUTEv>
-		if (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13)) // if the pin is HIGH
+		if (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13)) {  // if the pin is HIGH
  800429c:	f44f 5100 	mov.w	r1, #8192	; 0x2000
  80042a0:	4811      	ldr	r0, [pc, #68]	; (80042e8 <_ZN7DS18B208readDataEv+0x88>)
  80042a2:	f002 fa8b 	bl	80067bc <HAL_GPIO_ReadPin>
@@ -9469,8 +9447,7 @@ uint8_t DS18B20::readData()
  80042b0:	b2db      	uxtb	r3, r3
  80042b2:	2b00      	cmp	r3, #0
  80042b4:	d009      	beq.n	80042ca <_ZN7DS18B208readDataEv+0x6a>
-		{
-			value |= 1 << i; // read = 1
+			value |= 1 << i;                         // read = 1
  80042b6:	7bbb      	ldrb	r3, [r7, #14]
  80042b8:	2201      	movs	r2, #1
  80042ba:	fa02 f303 	lsl.w	r3, r2, r3
@@ -9480,13 +9457,13 @@ uint8_t DS18B20::readData()
  80042c6:	b25b      	sxtb	r3, r3
  80042c8:	73fb      	strb	r3, [r7, #15]
 		}
-		_tim->delayUS(60); // wait for 60 us
+		_tim->delayUS(60);                           // wait for 60 us
  80042ca:	687b      	ldr	r3, [r7, #4]
  80042cc:	681b      	ldr	r3, [r3, #0]
  80042ce:	213c      	movs	r1, #60	; 0x3c
  80042d0:	4618      	mov	r0, r3
  80042d2:	f001 ff3d 	bl	8006150 <_ZN5TIMER7delayUSEt>
-	for (uint8_t i = 0; i < 8; i++)
+	for (uint8_t i = 0; i < 8; i++) {
  80042d6:	7bbb      	ldrb	r3, [r7, #14]
  80042d8:	3301      	adds	r3, #1
  80042da:	73bb      	strb	r3, [r7, #14]
@@ -9503,8 +9480,7 @@ uint8_t DS18B20::readData()
 
 080042ec <_ZN7DS18B2015readTemperatureEv>:
 
-float DS18B20::readTemperature()
-{
+float DS18B20::readTemperature() {
  80042ec:	b580      	push	{r7, lr}
  80042ee:	b084      	sub	sp, #16
  80042f0:	af00      	add	r7, sp, #0
@@ -9537,7 +9513,6 @@ float DS18B20::readTemperature()
  8004326:	21be      	movs	r1, #190	; 0xbe
  8004328:	6878      	ldr	r0, [r7, #4]
  800432a:	f7ff ff53 	bl	80041d4 <_ZN7DS18B209writeDataEh>
-
 	uint8_t temp1 = readData();
  800432e:	6878      	ldr	r0, [r7, #4]
  8004330:	f7ff ff96 	bl	8004260 <_ZN7DS18B208readDataEv>
@@ -9548,7 +9523,6 @@ float DS18B20::readTemperature()
  800433a:	f7ff ff91 	bl	8004260 <_ZN7DS18B208readDataEv>
  800433e:	4603      	mov	r3, r0
  8004340:	73bb      	strb	r3, [r7, #14]
-
 	uint16_t tempCom = (temp2 << 8) | temp1;
  8004342:	7bbb      	ldrb	r3, [r7, #14]
  8004344:	021b      	lsls	r3, r3, #8
@@ -9558,7 +9532,6 @@ float DS18B20::readTemperature()
  800434c:	4313      	orrs	r3, r2
  800434e:	b21b      	sxth	r3, r3
  8004350:	81bb      	strh	r3, [r7, #12]
-
 	return (float)(tempCom / 16.0);
  8004352:	89bb      	ldrh	r3, [r7, #12]
  8004354:	4618      	mov	r0, r3
@@ -9633,7 +9606,7 @@ float DS18B20::readTemperature()
 
 #include <PIDRegulator.hpp>
 
-PID_Regulator::PID_Regulator(unsigned char targetTemp,
+PID_Regulator::PID_Regulator(unsigned char target_temp,
  80043c8:	b580      	push	{r7, lr}
  80043ca:	b08a      	sub	sp, #40	; 0x28
  80043cc:	af00      	add	r7, sp, #0
@@ -9643,12 +9616,12 @@ PID_Regulator::PID_Regulator(unsigned char targetTemp,
  80043d4:	72fb      	strb	r3, [r7, #11]
  80043d6:	4613      	mov	r3, r2
  80043d8:	72bb      	strb	r3, [r7, #10]
-		std::shared_ptr<RelayOutput>relay)
-		: targetTemp_(targetTemp),
-		  period_(period),
-		  filter_(filter),
-		  ds18b20_(ds18b20),
-		  relay_(relay) {
+    std::shared_ptr<RelayOutput>relay)
+    : target_temp_(target_temp),
+    period_(period),
+    filter_(filter),
+    ds18b20_(ds18b20),
+    relay_(relay) {
  80043da:	4a27      	ldr	r2, [pc, #156]	; (8004478 <_ZN13PID_RegulatorC1EhhSt10shared_ptrI14AdaptiveFilterES0_I7DS18B20ES0_I11RelayOutputE+0xb0>)
  80043dc:	68fb      	ldr	r3, [r7, #12]
  80043de:	601a      	str	r2, [r3, #0]
@@ -9697,22 +9670,22 @@ PID_Regulator::PID_Regulator(unsigned char targetTemp,
  800443e:	68fb      	ldr	r3, [r7, #12]
  8004440:	7aba      	ldrb	r2, [r7, #10]
  8004442:	f883 2040 	strb.w	r2, [r3, #64]	; 0x40
-	int dt = 0;
+	int dt_ = 0;
  8004446:	2300      	movs	r3, #0
  8004448:	627b      	str	r3, [r7, #36]	; 0x24
-	int minOut = 1; // 1 sec
+	int min_out_ = 1; // 1 sec
  800444a:	2301      	movs	r3, #1
  800444c:	623b      	str	r3, [r7, #32]
-	int maxOut = 10; // 10 sec
+	int max_out_ = 10; // 10 sec
  800444e:	230a      	movs	r3, #10
  8004450:	61fb      	str	r3, [r7, #28]
-	float kp = 1;
+	float kp_ = 1;
  8004452:	f04f 537e 	mov.w	r3, #1065353216	; 0x3f800000
  8004456:	61bb      	str	r3, [r7, #24]
-	float ki = 1;
+	float ki_ = 1;
  8004458:	f04f 537e 	mov.w	r3, #1065353216	; 0x3f800000
  800445c:	617b      	str	r3, [r7, #20]
-	float kd = 1;
+	float kd_ = 1;
  800445e:	f04f 537e 	mov.w	r3, #1065353216	; 0x3f800000
  8004462:	613b      	str	r3, [r7, #16]
 	cycle_ = kOff;
@@ -9782,12 +9755,12 @@ PID_Regulator::~PID_Regulator() {
  80044e2:	bd80      	pop	{r7, pc}
 
 080044e4 <_ZN13PID_Regulator5ClampEfff>:
-{
+
+float PID_Regulator::GetTemperature() {
 	return filter_->RenewVal(ds18b20_->readTemperature());
 }
 
-float PID_Regulator::Clamp(float value, float min, float max)
-{
+float PID_Regulator::Clamp(float value, float min, float max) {
  80044e4:	b580      	push	{r7, lr}
  80044e6:	b084      	sub	sp, #16
  80044e8:	af00      	add	r7, sp, #0
@@ -9821,14 +9794,13 @@ float PID_Regulator::Clamp(float value, float min, float max)
 
 08004520 <_ZN13PID_Regulator11GetNewWidthEf>:
 
-int PID_Regulator::GetNewWidth (float input)
-{
+int PID_Regulator::GetNewWidth (float input) {
  8004520:	b5b0      	push	{r4, r5, r7, lr}
  8004522:	b084      	sub	sp, #16
  8004524:	af00      	add	r7, sp, #0
  8004526:	6078      	str	r0, [r7, #4]
  8004528:	6039      	str	r1, [r7, #0]
-	 float err = (float)targetTemp_ - input;
+	 float err = (float)target_temp_ - input;
  800452a:	687b      	ldr	r3, [r7, #4]
  800452c:	791b      	ldrb	r3, [r3, #4]
  800452e:	4618      	mov	r0, r3
@@ -9839,8 +9811,7 @@ int PID_Regulator::GetNewWidth (float input)
  800453a:	f7fc fa3b 	bl	80009b4 <__aeabi_fsub>
  800453e:	4603      	mov	r3, r0
  8004540:	60fb      	str	r3, [r7, #12]
-
-	 integral = Clamp(integral + (float)err * dt * ki, minOut, maxOut);
+	 integral_ = Clamp(integral_ + (float)err * dt_ * ki_, min_out_, max_out_);
  8004542:	687b      	ldr	r3, [r7, #4]
  8004544:	6b9c      	ldr	r4, [r3, #56]	; 0x38
  8004546:	687b      	ldr	r3, [r7, #4]
@@ -9881,8 +9852,7 @@ int PID_Regulator::GetNewWidth (float input)
  800459a:	4602      	mov	r2, r0
  800459c:	687b      	ldr	r3, [r7, #4]
  800459e:	639a      	str	r2, [r3, #56]	; 0x38
-
-	 float D = (err - prevErr) / dt;
+	 float D = (err - prev_err_) / dt_;
  80045a0:	687b      	ldr	r3, [r7, #4]
  80045a2:	6bdb      	ldr	r3, [r3, #60]	; 0x3c
  80045a4:	4619      	mov	r1, r3
@@ -9900,12 +9870,11 @@ int PID_Regulator::GetNewWidth (float input)
  80045c0:	f7fc fbb6 	bl	8000d30 <__aeabi_fdiv>
  80045c4:	4603      	mov	r3, r0
  80045c6:	60bb      	str	r3, [r7, #8]
-	 prevErr = err;
+	 prev_err_ = err;
  80045c8:	687b      	ldr	r3, [r7, #4]
  80045ca:	68fa      	ldr	r2, [r7, #12]
  80045cc:	63da      	str	r2, [r3, #60]	; 0x3c
-
-	 return Clamp(err * kp + integral + D * kd, minOut, maxOut);
+	 return Clamp(err * kp_ + integral_ + D * kd_, min_out_, max_out_);
  80045ce:	687b      	ldr	r3, [r7, #4]
  80045d0:	6adb      	ldr	r3, [r3, #44]	; 0x2c
  80045d2:	68f9      	ldr	r1, [r7, #12]
@@ -9957,21 +9926,20 @@ int PID_Regulator::GetNewWidth (float input)
 
 0800463c <_ZN13PID_Regulator18TemperatureSupportEf>:
 
-void PID_Regulator::TemperatureSupport(float current_temp)
-{
+void PID_Regulator::TemperatureSupport(float current_temp) {
  800463c:	b580      	push	{r7, lr}
  800463e:	b082      	sub	sp, #8
  8004640:	af00      	add	r7, sp, #0
  8004642:	6078      	str	r0, [r7, #4]
  8004644:	6039      	str	r1, [r7, #0]
-	// calling this function in CppMain every second
-	// regulation range: 1-10 sec
-	if (cycle_ == kOff) {  // start new cycle
+  // calling this function in CppMain every second
+  // regulation range: 1-10 sec
+  if (cycle_ == kOff) {  // start new cycle
  8004646:	687b      	ldr	r3, [r7, #4]
  8004648:	f893 3043 	ldrb.w	r3, [r3, #67]	; 0x43
  800464c:	2b00      	cmp	r3, #0
  800464e:	d11b      	bne.n	8004688 <_ZN13PID_Regulator18TemperatureSupportEf+0x4c>
-		heat_up_ = GetNewWidth(current_temp);  // heating time (sec)
+    heat_up_ = GetNewWidth(current_temp);  // heating time (sec)
  8004650:	6839      	ldr	r1, [r7, #0]
  8004652:	6878      	ldr	r0, [r7, #4]
  8004654:	f7ff ff64 	bl	8004520 <_ZN13PID_Regulator11GetNewWidthEf>
@@ -9979,7 +9947,7 @@ void PID_Regulator::TemperatureSupport(float current_temp)
  800465a:	b2da      	uxtb	r2, r3
  800465c:	687b      	ldr	r3, [r7, #4]
  800465e:	f883 2042 	strb.w	r2, [r3, #66]	; 0x42
-		cool_down_ = period_ - heat_up_;  // cooling time (sec)
+    cool_down_ = period_ - heat_up_;  // cooling time (sec)
  8004662:	687b      	ldr	r3, [r7, #4]
  8004664:	f893 2040 	ldrb.w	r2, [r3, #64]	; 0x40
  8004668:	687b      	ldr	r3, [r7, #4]
@@ -9988,31 +9956,31 @@ void PID_Regulator::TemperatureSupport(float current_temp)
  8004670:	b2da      	uxtb	r2, r3
  8004672:	687b      	ldr	r3, [r7, #4]
  8004674:	f883 2041 	strb.w	r2, [r3, #65]	; 0x41
-		cycle_ = kOn;
+    cycle_ = kOn;
  8004678:	687b      	ldr	r3, [r7, #4]
  800467a:	2201      	movs	r2, #1
  800467c:	f883 2043 	strb.w	r2, [r3, #67]	; 0x43
-		stage_ = kCoolDown;
+    stage_ = kCoolDown;
  8004680:	687b      	ldr	r3, [r7, #4]
  8004682:	2200      	movs	r2, #0
  8004684:	f883 2044 	strb.w	r2, [r3, #68]	; 0x44
-	}
-	if(cycle_ == kOn) {
+  }
+  if(cycle_ == kOn) {
  8004688:	687b      	ldr	r3, [r7, #4]
  800468a:	f893 3043 	ldrb.w	r3, [r3, #67]	; 0x43
  800468e:	2b01      	cmp	r3, #1
  8004690:	d157      	bne.n	8004742 <_ZN13PID_Regulator18TemperatureSupportEf+0x106>
-		if (stage_ == kCoolDown) {  // cooling
+    if (stage_ == kCoolDown) {  // cooling
  8004692:	687b      	ldr	r3, [r7, #4]
  8004694:	f893 3044 	ldrb.w	r3, [r3, #68]	; 0x44
  8004698:	2b00      	cmp	r3, #0
  800469a:	d11f      	bne.n	80046dc <_ZN13PID_Regulator18TemperatureSupportEf+0xa0>
-			if (cool_down_ != 0) {
+      if (cool_down_ != 0) {
  800469c:	687b      	ldr	r3, [r7, #4]
  800469e:	f893 3041 	ldrb.w	r3, [r3, #65]	; 0x41
  80046a2:	2b00      	cmp	r3, #0
  80046a4:	d010      	beq.n	80046c8 <_ZN13PID_Regulator18TemperatureSupportEf+0x8c>
-			relay_-> Off();
+        relay_-> Off();
  80046a6:	687b      	ldr	r3, [r7, #4]
  80046a8:	3318      	adds	r3, #24
  80046aa:	4618      	mov	r0, r3
@@ -10020,15 +9988,15 @@ void PID_Regulator::TemperatureSupport(float current_temp)
  80046b0:	4603      	mov	r3, r0
  80046b2:	4618      	mov	r0, r3
  80046b4:	f000 f89d 	bl	80047f2 <_ZN11RelayOutput3OffEv>
-			--cool_down_;
+        --cool_down_;
  80046b8:	687b      	ldr	r3, [r7, #4]
  80046ba:	f893 3041 	ldrb.w	r3, [r3, #65]	; 0x41
  80046be:	3b01      	subs	r3, #1
  80046c0:	b2da      	uxtb	r2, r3
  80046c2:	687b      	ldr	r3, [r7, #4]
  80046c4:	f883 2041 	strb.w	r2, [r3, #65]	; 0x41
-			}
-			if (cool_down_ == 0) stage_ = kHeatUp;
+	  }
+      if (cool_down_ == 0) stage_ = kHeatUp;
  80046c8:	687b      	ldr	r3, [r7, #4]
  80046ca:	f893 3041 	ldrb.w	r3, [r3, #65]	; 0x41
  80046ce:	2b00      	cmp	r3, #0
@@ -10036,14 +10004,14 @@ void PID_Regulator::TemperatureSupport(float current_temp)
  80046d2:	687b      	ldr	r3, [r7, #4]
  80046d4:	2201      	movs	r2, #1
  80046d6:	f883 2044 	strb.w	r2, [r3, #68]	; 0x44
-		} else if (heat_up_ == 0 && cool_down_ == 0) {  // end of cycle
-			relay_-> Off();
-			cycle_ = kOff;
-		}
-	}
+    } else if (heat_up_ == 0 && cool_down_ == 0) {  // end of cycle
+      relay_-> Off();
+      cycle_ = kOff;
+    }
+  }
 }
  80046da:	e032      	b.n	8004742 <_ZN13PID_Regulator18TemperatureSupportEf+0x106>
-		} else if(stage_ == kHeatUp && heat_up_ != 0) {  // heating
+	} else if(stage_ == kHeatUp && heat_up_ != 0) {  // heating
  80046dc:	687b      	ldr	r3, [r7, #4]
  80046de:	f893 3044 	ldrb.w	r3, [r3, #68]	; 0x44
  80046e2:	2b01      	cmp	r3, #1
@@ -10052,7 +10020,7 @@ void PID_Regulator::TemperatureSupport(float current_temp)
  80046e8:	f893 3042 	ldrb.w	r3, [r3, #66]	; 0x42
  80046ec:	2b00      	cmp	r3, #0
  80046ee:	d011      	beq.n	8004714 <_ZN13PID_Regulator18TemperatureSupportEf+0xd8>
-			relay_-> On();
+      relay_-> On();
  80046f0:	687b      	ldr	r3, [r7, #4]
  80046f2:	3318      	adds	r3, #24
  80046f4:	4618      	mov	r0, r3
@@ -10060,7 +10028,7 @@ void PID_Regulator::TemperatureSupport(float current_temp)
  80046fa:	4603      	mov	r3, r0
  80046fc:	4618      	mov	r0, r3
  80046fe:	f000 f861 	bl	80047c4 <_ZN11RelayOutput2OnEv>
-			--heat_up_;
+      --heat_up_;
  8004702:	687b      	ldr	r3, [r7, #4]
  8004704:	f893 3042 	ldrb.w	r3, [r3, #66]	; 0x42
  8004708:	3b01      	subs	r3, #1
@@ -10069,7 +10037,7 @@ void PID_Regulator::TemperatureSupport(float current_temp)
  800470e:	f883 2042 	strb.w	r2, [r3, #66]	; 0x42
 }
  8004712:	e016      	b.n	8004742 <_ZN13PID_Regulator18TemperatureSupportEf+0x106>
-		} else if (heat_up_ == 0 && cool_down_ == 0) {  // end of cycle
+    } else if (heat_up_ == 0 && cool_down_ == 0) {  // end of cycle
  8004714:	687b      	ldr	r3, [r7, #4]
  8004716:	f893 3042 	ldrb.w	r3, [r3, #66]	; 0x42
  800471a:	2b00      	cmp	r3, #0
@@ -10078,7 +10046,7 @@ void PID_Regulator::TemperatureSupport(float current_temp)
  8004720:	f893 3041 	ldrb.w	r3, [r3, #65]	; 0x41
  8004724:	2b00      	cmp	r3, #0
  8004726:	d10c      	bne.n	8004742 <_ZN13PID_Regulator18TemperatureSupportEf+0x106>
-			relay_-> Off();
+      relay_-> Off();
  8004728:	687b      	ldr	r3, [r7, #4]
  800472a:	3318      	adds	r3, #24
  800472c:	4618      	mov	r0, r3
@@ -10086,7 +10054,7 @@ void PID_Regulator::TemperatureSupport(float current_temp)
  8004732:	4603      	mov	r3, r0
  8004734:	4618      	mov	r0, r3
  8004736:	f000 f85c 	bl	80047f2 <_ZN11RelayOutput3OffEv>
-			cycle_ = kOff;
+      cycle_ = kOff;
  800473a:	687b      	ldr	r3, [r7, #4]
  800473c:	2200      	movs	r2, #0
  800473e:	f883 2043 	strb.w	r2, [r3, #67]	; 0x43
@@ -10112,15 +10080,15 @@ RelayOutput::RelayOutput() {
  8004756:	687b      	ldr	r3, [r7, #4]
  8004758:	601a      	str	r2, [r3, #0]
 
-	relayGpiox = GPIOB;
+	relay_gpiox_ = GPIOB;
  800475a:	687b      	ldr	r3, [r7, #4]
  800475c:	4a08      	ldr	r2, [pc, #32]	; (8004780 <_ZN11RelayOutputC1Ev+0x34>)
  800475e:	605a      	str	r2, [r3, #4]
-	relayGpioPin = GPIO_PIN_9;
+	relay_gpio_pin_ = GPIO_PIN_9;
  8004760:	687b      	ldr	r3, [r7, #4]
  8004762:	f44f 7200 	mov.w	r2, #512	; 0x200
  8004766:	811a      	strh	r2, [r3, #8]
-	relayState = RELAY_OFF;
+	relay_state_ = kRelayOff;
  8004768:	687b      	ldr	r3, [r7, #4]
  800476a:	2201      	movs	r2, #1
  800476c:	729a      	strb	r2, [r3, #10]
@@ -10176,19 +10144,17 @@ RelayOutput::~RelayOutput() {
 
 080047c4 <_ZN11RelayOutput2OnEv>:
 
-void RelayOutput::On()
-{
+void RelayOutput::On() {
  80047c4:	b580      	push	{r7, lr}
  80047c6:	b082      	sub	sp, #8
  80047c8:	af00      	add	r7, sp, #0
  80047ca:	6078      	str	r0, [r7, #4]
-	if (relayState == RELAY_OFF)
+	if (relay_state_ == kRelayOff) {
  80047cc:	687b      	ldr	r3, [r7, #4]
  80047ce:	7a9b      	ldrb	r3, [r3, #10]
  80047d0:	2b01      	cmp	r3, #1
  80047d2:	d10a      	bne.n	80047ea <_ZN11RelayOutput2OnEv+0x26>
-	{
-		HAL_GPIO_WritePin(relayGpiox, relayGpioPin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(relay_gpiox_, relay_gpio_pin_, GPIO_PIN_SET);
  80047d4:	687b      	ldr	r3, [r7, #4]
  80047d6:	6858      	ldr	r0, [r3, #4]
  80047d8:	687b      	ldr	r3, [r7, #4]
@@ -10196,7 +10162,7 @@ void RelayOutput::On()
  80047dc:	2201      	movs	r2, #1
  80047de:	4619      	mov	r1, r3
  80047e0:	f002 f803 	bl	80067ea <HAL_GPIO_WritePin>
-		relayState = RELAY_ON;
+		relay_state_ = kRelayOn;
  80047e4:	687b      	ldr	r3, [r7, #4]
  80047e6:	2200      	movs	r2, #0
  80047e8:	729a      	strb	r2, [r3, #10]
@@ -10209,19 +10175,17 @@ void RelayOutput::On()
 
 080047f2 <_ZN11RelayOutput3OffEv>:
 
-void RelayOutput::Off()
-{
+void RelayOutput::Off() {
  80047f2:	b580      	push	{r7, lr}
  80047f4:	b082      	sub	sp, #8
  80047f6:	af00      	add	r7, sp, #0
  80047f8:	6078      	str	r0, [r7, #4]
-	if (relayState == RELAY_ON)
+	if (relay_state_ == kRelayOn) {
  80047fa:	687b      	ldr	r3, [r7, #4]
  80047fc:	7a9b      	ldrb	r3, [r3, #10]
  80047fe:	2b00      	cmp	r3, #0
  8004800:	d10a      	bne.n	8004818 <_ZN11RelayOutput3OffEv+0x26>
-	{
-		HAL_GPIO_WritePin(relayGpiox, relayGpioPin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(relay_gpiox_, relay_gpio_pin_, GPIO_PIN_RESET);
  8004802:	687b      	ldr	r3, [r7, #4]
  8004804:	6858      	ldr	r0, [r3, #4]
  8004806:	687b      	ldr	r3, [r7, #4]
@@ -10229,7 +10193,7 @@ void RelayOutput::Off()
  800480a:	2200      	movs	r2, #0
  800480c:	4619      	mov	r1, r3
  800480e:	f001 ffec 	bl	80067ea <HAL_GPIO_WritePin>
-		relayState = RELAY_OFF;
+		relay_state_ = kRelayOff;
  8004812:	687b      	ldr	r3, [r7, #4]
  8004814:	2201      	movs	r2, #1
  8004816:	729a      	strb	r2, [r3, #10]
@@ -10461,13 +10425,12 @@ TM1637::~TM1637() {
 
 080049a0 <_ZN6TM16377CLKhighEv>:
 
-void TM1637::CLKhigh()
-{																	  	//SCL high period
+void TM1637::CLKhigh() {  //SCL high period
  80049a0:	b580      	push	{r7, lr}
  80049a2:	b082      	sub	sp, #8
  80049a4:	af00      	add	r7, sp, #0
  80049a6:	6078      	str	r0, [r7, #4]
-	HAL_GPIO_WritePin(SCLK_SDO_Port, SCLK_Pin, GPIO_PIN_SET);		  	//Setting SCL frequency
+	HAL_GPIO_WritePin(SCLK_SDO_Port, SCLK_Pin, GPIO_PIN_SET);  //Setting SCL frequency
  80049a8:	687b      	ldr	r3, [r7, #4]
  80049aa:	6b58      	ldr	r0, [r3, #52]	; 0x34
  80049ac:	687b      	ldr	r3, [r7, #4]
@@ -10499,13 +10462,12 @@ void TM1637::CLKhigh()
 
 080049e0 <_ZN6TM16376CLKlowEv>:
 
-void TM1637::CLKlow()
-{
+void TM1637::CLKlow() {
  80049e0:	b580      	push	{r7, lr}
  80049e2:	b082      	sub	sp, #8
  80049e4:	af00      	add	r7, sp, #0
  80049e6:	6078      	str	r0, [r7, #4]
-	HAL_GPIO_WritePin(SCLK_SDO_Port, SCLK_Pin, GPIO_PIN_RESET);		//SCL low period
+	HAL_GPIO_WritePin(SCLK_SDO_Port, SCLK_Pin, GPIO_PIN_RESET);  //SCL low period
  80049e8:	687b      	ldr	r3, [r7, #4]
  80049ea:	6b58      	ldr	r0, [r3, #52]	; 0x34
  80049ec:	687b      	ldr	r3, [r7, #4]
@@ -10537,13 +10499,12 @@ void TM1637::CLKlow()
 
 08004a20 <_ZN6TM16377SDOhighEv>:
 
-void TM1637::SDOhigh()
-{
+void TM1637::SDOhigh() {
  8004a20:	b580      	push	{r7, lr}
  8004a22:	b082      	sub	sp, #8
  8004a24:	af00      	add	r7, sp, #0
  8004a26:	6078      	str	r0, [r7, #4]
-	HAL_GPIO_WritePin(SCLK_SDO_Port, SDo_Pin, GPIO_PIN_SET);			//SDO high period
+	HAL_GPIO_WritePin(SCLK_SDO_Port, SDo_Pin, GPIO_PIN_SET);     //SDO high period
  8004a28:	687b      	ldr	r3, [r7, #4]
  8004a2a:	6b58      	ldr	r0, [r3, #52]	; 0x34
  8004a2c:	687b      	ldr	r3, [r7, #4]
@@ -10575,13 +10536,12 @@ void TM1637::SDOhigh()
 
 08004a60 <_ZN6TM16376SDOlowEv>:
 
-void TM1637::SDOlow()
-{
+void TM1637::SDOlow() {
  8004a60:	b580      	push	{r7, lr}
  8004a62:	b082      	sub	sp, #8
  8004a64:	af00      	add	r7, sp, #0
  8004a66:	6078      	str	r0, [r7, #4]
-	HAL_GPIO_WritePin(SCLK_SDO_Port, SDo_Pin, GPIO_PIN_RESET);			//SDO low period
+	HAL_GPIO_WritePin(SCLK_SDO_Port, SDo_Pin, GPIO_PIN_RESET);	  //SDO low period
  8004a68:	687b      	ldr	r3, [r7, #4]
  8004a6a:	6b58      	ldr	r0, [r3, #52]	; 0x34
  8004a6c:	687b      	ldr	r3, [r7, #4]
@@ -10613,8 +10573,7 @@ void TM1637::SDOlow()
 
 08004aa0 <_ZN6TM163711StartPacketEv>:
 
-void TM1637::StartPacket()												//Lower SDO line while CLK line is high
-{
+void TM1637::StartPacket() {									   //Lower SDO line while CLK line is high
  8004aa0:	b580      	push	{r7, lr}
  8004aa2:	b082      	sub	sp, #8
  8004aa4:	af00      	add	r7, sp, #0
@@ -10622,14 +10581,12 @@ void TM1637::StartPacket()												//Lower SDO line while CLK line is high
 	CLKhigh();
  8004aa8:	6878      	ldr	r0, [r7, #4]
  8004aaa:	f7ff ff79 	bl	80049a0 <_ZN6TM16377CLKhighEv>
-
 	SDOhigh();
  8004aae:	6878      	ldr	r0, [r7, #4]
  8004ab0:	f7ff ffb6 	bl	8004a20 <_ZN6TM16377SDOhighEv>
 	SDOlow();
  8004ab4:	6878      	ldr	r0, [r7, #4]
  8004ab6:	f7ff ffd3 	bl	8004a60 <_ZN6TM16376SDOlowEv>
-
 	CLKlow();
  8004aba:	6878      	ldr	r0, [r7, #4]
  8004abc:	f7ff ff90 	bl	80049e0 <_ZN6TM16376CLKlowEv>
@@ -10641,8 +10598,7 @@ void TM1637::StartPacket()												//Lower SDO line while CLK line is high
 
 08004ac8 <_ZN6TM16379EndPacketEv>:
 
-void TM1637::EndPacket()													//SDO line is pulled high while SCL line is high
-{
+void TM1637::EndPacket() {
  8004ac8:	b580      	push	{r7, lr}
  8004aca:	b082      	sub	sp, #8
  8004acc:	af00      	add	r7, sp, #0
@@ -10653,7 +10609,6 @@ void TM1637::EndPacket()													//SDO line is pulled high while SCL line is
 	SDOlow();
  8004ad6:	6878      	ldr	r0, [r7, #4]
  8004ad8:	f7ff ffc2 	bl	8004a60 <_ZN6TM16376SDOlowEv>
-
 	CLKhigh();
  8004adc:	6878      	ldr	r0, [r7, #4]
  8004ade:	f7ff ff5f 	bl	80049a0 <_ZN6TM16377CLKhighEv>
@@ -10668,14 +10623,13 @@ void TM1637::EndPacket()													//SDO line is pulled high while SCL line is
 
 08004af0 <_ZN6TM16377DataOutEPh>:
 
-void TM1637::DataOut(uint8_t* TxBuffer)							//Low level data transfer function
-{
+void TM1637::DataOut(uint8_t* TxBuffer)	{						   //Low level data transfer function
  8004af0:	b590      	push	{r4, r7, lr}
  8004af2:	b085      	sub	sp, #20
  8004af4:	af00      	add	r7, sp, #0
  8004af6:	6078      	str	r0, [r7, #4]
  8004af8:	6039      	str	r1, [r7, #0]
-	for(int8_t j = 0; j < commands[4]; j++)								//Send least significant bit first
+	for(int8_t j = 0; j < commands[4]; j++)	{					   //Send least significant bit first
  8004afa:	2300      	movs	r3, #0
  8004afc:	73fb      	strb	r3, [r7, #15]
  8004afe:	f997 400f 	ldrsb.w	r4, [r7, #15]
@@ -10693,25 +10647,21 @@ void TM1637::DataOut(uint8_t* TxBuffer)							//Low level data transfer function
  8004b1a:	b2db      	uxtb	r3, r3
  8004b1c:	2b00      	cmp	r3, #0
  8004b1e:	d01a      	beq.n	8004b56 <_ZN6TM16377DataOutEPh+0x66>
-	{
 		CLKlow();
  8004b20:	6878      	ldr	r0, [r7, #4]
  8004b22:	f7ff ff5d 	bl	80049e0 <_ZN6TM16376CLKlowEv>
-		if(TxBuffer[j] == GPIO_PIN_SET)							//Check logic level
+		if(TxBuffer[j] == GPIO_PIN_SET)	{						   //Check logic level
  8004b26:	f997 300f 	ldrsb.w	r3, [r7, #15]
  8004b2a:	683a      	ldr	r2, [r7, #0]
  8004b2c:	4413      	add	r3, r2
  8004b2e:	781b      	ldrb	r3, [r3, #0]
  8004b30:	2b01      	cmp	r3, #1
  8004b32:	d103      	bne.n	8004b3c <_ZN6TM16377DataOutEPh+0x4c>
-		{
 			SDOhigh();
  8004b34:	6878      	ldr	r0, [r7, #4]
  8004b36:	f7ff ff73 	bl	8004a20 <_ZN6TM16377SDOhighEv>
  8004b3a:	e002      	b.n	8004b42 <_ZN6TM16377DataOutEPh+0x52>
-		}
-		else
-		{
+		} else {
 			SDOlow();
  8004b3c:	6878      	ldr	r0, [r7, #4]
  8004b3e:	f7ff ff8f 	bl	8004a60 <_ZN6TM16376SDOlowEv>
@@ -10719,7 +10669,7 @@ void TM1637::DataOut(uint8_t* TxBuffer)							//Low level data transfer function
 		CLKhigh();
  8004b42:	6878      	ldr	r0, [r7, #4]
  8004b44:	f7ff ff2c 	bl	80049a0 <_ZN6TM16377CLKhighEv>
-	for(int8_t j = 0; j < commands[4]; j++)								//Send least significant bit first
+	for(int8_t j = 0; j < commands[4]; j++)	{					   //Send least significant bit first
  8004b48:	f997 300f 	ldrsb.w	r3, [r7, #15]
  8004b4c:	b2db      	uxtb	r3, r3
  8004b4e:	3301      	adds	r3, #1
@@ -10735,8 +10685,7 @@ void TM1637::DataOut(uint8_t* TxBuffer)							//Low level data transfer function
 
 08004b5e <_ZN6TM16379TxCommandEPh>:
 
-void TM1637::TxCommand(uint8_t* command)
-{																		//Handles high level (bit by bit) transmission operation
+void TM1637::TxCommand(uint8_t* command) {   						//Handles high level (bit by bit) transmission operation
  8004b5e:	b580      	push	{r7, lr}
  8004b60:	b086      	sub	sp, #24
  8004b62:	af00      	add	r7, sp, #0
@@ -10747,8 +10696,7 @@ void TM1637::TxCommand(uint8_t* command)
  8004b6a:	60fb      	str	r3, [r7, #12]
  8004b6c:	2300      	movs	r3, #0
  8004b6e:	613b      	str	r3, [r7, #16]
-
-	for(uint8_t i = 0; i < commands[4]; i++)
+	for(uint8_t i = 0; i < commands[4]; i++) {
  8004b70:	2300      	movs	r3, #0
  8004b72:	75fb      	strb	r3, [r7, #23]
  8004b74:	687b      	ldr	r3, [r7, #4]
@@ -10766,7 +10714,6 @@ void TM1637::TxCommand(uint8_t* command)
  8004b8e:	b2db      	uxtb	r3, r3
  8004b90:	2b00      	cmp	r3, #0
  8004b92:	d015      	beq.n	8004bc0 <_ZN6TM16379TxCommandEPh+0x62>
-	{
 		byteData[i] = (command[0] & (0x01 << i)) && 1;																		//Convert from byte to bit per array element
  8004b94:	683b      	ldr	r3, [r7, #0]
  8004b96:	781b      	ldrb	r3, [r3, #0]
@@ -10783,36 +10730,35 @@ void TM1637::TxCommand(uint8_t* command)
  8004bb0:	3318      	adds	r3, #24
  8004bb2:	443b      	add	r3, r7
  8004bb4:	f803 2c0c 	strb.w	r2, [r3, #-12]
-	for(uint8_t i = 0; i < commands[4]; i++)
+	for(uint8_t i = 0; i < commands[4]; i++) {
  8004bb8:	7dfb      	ldrb	r3, [r7, #23]
  8004bba:	3301      	adds	r3, #1
  8004bbc:	75fb      	strb	r3, [r7, #23]
  8004bbe:	e7d9      	b.n	8004b74 <_ZN6TM16379TxCommandEPh+0x16>
 	}
-	StartPacket();												//Send start packet bit
+	StartPacket();												    //Send start packet bit
  8004bc0:	6878      	ldr	r0, [r7, #4]
  8004bc2:	f7ff ff6d 	bl	8004aa0 <_ZN6TM163711StartPacketEv>
-	DataOut(byteData);											//Send one byte
+	DataOut(byteData);											    //Send one byte
  8004bc6:	f107 030c 	add.w	r3, r7, #12
  8004bca:	4619      	mov	r1, r3
  8004bcc:	6878      	ldr	r0, [r7, #4]
  8004bce:	f7ff ff8f 	bl	8004af0 <_ZN6TM16377DataOutEPh>
-	CLKlow();													//Send one CLK for acknowledgment
+	CLKlow();													    //Send one CLK for acknowledgment
  8004bd2:	6878      	ldr	r0, [r7, #4]
  8004bd4:	f7ff ff04 	bl	80049e0 <_ZN6TM16376CLKlowEv>
 	CLKhigh();
  8004bd8:	6878      	ldr	r0, [r7, #4]
  8004bda:	f7ff fee1 	bl	80049a0 <_ZN6TM16377CLKhighEv>
-	ACKcheck();													//wait for acknowledgment.
+	ACKcheck();													    //wait for acknowledgment.
  8004bde:	6878      	ldr	r0, [r7, #4]
  8004be0:	f000 f888 	bl	8004cf4 <_ZN6TM16378ACKcheckEv>
-	if((command[0] & 0xC0) != (0xC0))										//Check if the received packet is not an address.
+	if((command[0] & 0xC0) != (0xC0)) {								//Check if the received packet is not an address.
  8004be4:	683b      	ldr	r3, [r7, #0]
  8004be6:	781b      	ldrb	r3, [r3, #0]
  8004be8:	f003 03c0 	and.w	r3, r3, #192	; 0xc0
  8004bec:	2bc0      	cmp	r3, #192	; 0xc0
  8004bee:	d002      	beq.n	8004bf6 <_ZN6TM16379TxCommandEPh+0x98>
-	{
 		EndPacket();
  8004bf0:	6878      	ldr	r0, [r7, #4]
  8004bf2:	f7ff ff69 	bl	8004ac8 <_ZN6TM16379EndPacketEv>
@@ -10825,8 +10771,7 @@ void TM1637::TxCommand(uint8_t* command)
 
 08004bfe <_ZN6TM16376TxDataEPhh>:
 
-void TM1637::TxData(uint8_t* data, uint8_t packetSize)
-{																		//Handles high level (bit by bit) transmission operation
+void TM1637::TxData(uint8_t* data, uint8_t packetSize) {																//Handles high level (bit by bit) transmission operation
  8004bfe:	b580      	push	{r7, lr}
  8004c00:	b088      	sub	sp, #32
  8004c02:	af00      	add	r7, sp, #0
@@ -10840,21 +10785,19 @@ void TM1637::TxData(uint8_t* data, uint8_t packetSize)
  8004c10:	2300      	movs	r3, #0
  8004c12:	61bb      	str	r3, [r7, #24]
 
-	for(uint8_t i = 0; i < packetSize; i++)
+	for(uint8_t i = 0; i < packetSize; i++) {
  8004c14:	2300      	movs	r3, #0
  8004c16:	77fb      	strb	r3, [r7, #31]
  8004c18:	7ffa      	ldrb	r2, [r7, #31]
  8004c1a:	79fb      	ldrb	r3, [r7, #7]
  8004c1c:	429a      	cmp	r2, r3
  8004c1e:	d22f      	bcs.n	8004c80 <_ZN6TM16376TxDataEPhh+0x82>
-	{
-		for(uint8_t j = 0; j < 8; j++)
+		for(uint8_t j = 0; j < 8; j++) {
  8004c20:	2300      	movs	r3, #0
  8004c22:	77bb      	strb	r3, [r7, #30]
  8004c24:	7fbb      	ldrb	r3, [r7, #30]
  8004c26:	2b07      	cmp	r3, #7
  8004c28:	d817      	bhi.n	8004c5a <_ZN6TM16376TxDataEPhh+0x5c>
-		{
 			byteData[j] = (data[i] & (0x01 << j)) && 1;
  8004c2a:	7ffb      	ldrb	r3, [r7, #31]
  8004c2c:	68ba      	ldr	r2, [r7, #8]
@@ -10873,7 +10816,7 @@ void TM1637::TxData(uint8_t* data, uint8_t packetSize)
  8004c4a:	3320      	adds	r3, #32
  8004c4c:	443b      	add	r3, r7
  8004c4e:	f803 2c0c 	strb.w	r2, [r3, #-12]
-		for(uint8_t j = 0; j < 8; j++)
+		for(uint8_t j = 0; j < 8; j++) {
  8004c52:	7fbb      	ldrb	r3, [r7, #30]
  8004c54:	3301      	adds	r3, #1
  8004c56:	77bb      	strb	r3, [r7, #30]
@@ -10893,7 +10836,7 @@ void TM1637::TxData(uint8_t* data, uint8_t packetSize)
 		ACKcheck();	//Transmit byte by byte
  8004c72:	68f8      	ldr	r0, [r7, #12]
  8004c74:	f000 f83e 	bl	8004cf4 <_ZN6TM16378ACKcheckEv>
-	for(uint8_t i = 0; i < packetSize; i++)
+	for(uint8_t i = 0; i < packetSize; i++) {
  8004c78:	7ffb      	ldrb	r3, [r7, #31]
  8004c7a:	3301      	adds	r3, #1
  8004c7c:	77fb      	strb	r3, [r7, #31]
@@ -10911,14 +10854,14 @@ void TM1637::TxData(uint8_t* data, uint8_t packetSize)
 
 08004c90 <_ZN6TM163710InitializeEh>:
 
-void TM1637::Initialize(uint8_t direction)								//Since SDI line is doing both transmission and reception
-{																		//the corresponding GPIO pin must be reinitialized on the run
+void TM1637::Initialize(uint8_t direction)	{							//Since SDI line is doing both transmission and reception
  8004c90:	b580      	push	{r7, lr}
  8004c92:	b086      	sub	sp, #24
  8004c94:	af00      	add	r7, sp, #0
  8004c96:	6078      	str	r0, [r7, #4]
  8004c98:	460b      	mov	r3, r1
  8004c9a:	70fb      	strb	r3, [r7, #3]
+    																	//the corresponding GPIO pin must be reinitialized on the run
 	GPIO_InitTypeDef GPIO_InitStruct = {0};								//To read ACK from TM1637 and to write data to it
  8004c9c:	f107 0308 	add.w	r3, r7, #8
  8004ca0:	2200      	movs	r2, #0
@@ -10936,38 +10879,38 @@ void TM1637::Initialize(uint8_t direction)								//Since SDI line is doing both
 	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
  8004cb4:	2302      	movs	r3, #2
  8004cb6:	617b      	str	r3, [r7, #20]
-	switch (direction)													//Depending on the function input initialize the pin as input or output
+	switch (direction) {
  8004cb8:	78fb      	ldrb	r3, [r7, #3]
  8004cba:	2b00      	cmp	r3, #0
  8004cbc:	d002      	beq.n	8004cc4 <_ZN6TM163710InitializeEh+0x34>
  8004cbe:	2b01      	cmp	r3, #1
  8004cc0:	d009      	beq.n	8004cd6 <_ZN6TM163710InitializeEh+0x46>
-		case 1:
-			GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-			HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
-			break;
+	  case 1:
+	  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+	  HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
+	  break;
 	}
 }
  8004cc2:	e011      	b.n	8004ce8 <_ZN6TM163710InitializeEh+0x58>
-			GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+	  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
  8004cc4:	2301      	movs	r3, #1
  8004cc6:	60fb      	str	r3, [r7, #12]
-			HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
+	  HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
  8004cc8:	f107 0308 	add.w	r3, r7, #8
  8004ccc:	4619      	mov	r1, r3
  8004cce:	4808      	ldr	r0, [pc, #32]	; (8004cf0 <_ZN6TM163710InitializeEh+0x60>)
  8004cd0:	f001 fbf0 	bl	80064b4 <HAL_GPIO_Init>
-			break;
+	  break;
  8004cd4:	e008      	b.n	8004ce8 <_ZN6TM163710InitializeEh+0x58>
-			GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+	  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
  8004cd6:	2300      	movs	r3, #0
  8004cd8:	60fb      	str	r3, [r7, #12]
-			HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
+	  HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
  8004cda:	f107 0308 	add.w	r3, r7, #8
  8004cde:	4619      	mov	r1, r3
  8004ce0:	4803      	ldr	r0, [pc, #12]	; (8004cf0 <_ZN6TM163710InitializeEh+0x60>)
  8004ce2:	f001 fbe7 	bl	80064b4 <HAL_GPIO_Init>
-			break;
+	  break;
  8004ce6:	bf00      	nop
 }
  8004ce8:	bf00      	nop
@@ -10978,8 +10921,7 @@ void TM1637::Initialize(uint8_t direction)								//Since SDI line is doing both
 
 08004cf4 <_ZN6TM16378ACKcheckEv>:
 
-void TM1637::ACKcheck()
-{
+void TM1637::ACKcheck() {
  8004cf4:	b580      	push	{r7, lr}
  8004cf6:	b082      	sub	sp, #8
  8004cf8:	af00      	add	r7, sp, #0
@@ -11036,8 +10978,7 @@ void TM1637::ACKcheck()
 
 08004d5c <_ZN6TM163712DisplayClearEv>:
 
-void TM1637::DisplayClear()
-{
+void TM1637::DisplayClear() {
  8004d5c:	b580      	push	{r7, lr}
  8004d5e:	b084      	sub	sp, #16
  8004d60:	af00      	add	r7, sp, #0
@@ -11104,8 +11045,7 @@ void TM1637::DisplayClear()
 
 08004ddc <_ZN6TM163713DisplayHandleEhNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE>:
 
-uint8_t TM1637::DisplayHandle(uint8_t brightness, std::string str)
-{
+uint8_t TM1637::DisplayHandle(uint8_t brightness, std::string str) {
  8004ddc:	b580      	push	{r7, lr}
  8004dde:	b08c      	sub	sp, #48	; 0x30
  8004de0:	af00      	add	r7, sp, #0
@@ -11122,11 +11062,10 @@ uint8_t TM1637::DisplayHandle(uint8_t brightness, std::string str)
 	TM1637Status parameterFalidation = TM1637_ERROR;
  8004dee:	2301      	movs	r3, #1
  8004df0:	f887 302f 	strb.w	r3, [r7, #47]	; 0x2f
-	if(brightness <= 7)												//there are 7 levels of brightness
+	if(brightness <= 7) {
  8004df4:	7afb      	ldrb	r3, [r7, #11]
  8004df6:	2b07      	cmp	r3, #7
  8004df8:	d840      	bhi.n	8004e7c <_ZN6TM163713DisplayHandleEhNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE+0xa0>
-	{
 	  commandCarrier[0] = commands[0];									//Send set data command
  8004dfa:	68fb      	ldr	r3, [r7, #12]
  8004dfc:	3314      	adds	r3, #20
@@ -11197,8 +11136,7 @@ uint8_t TM1637::DisplayHandle(uint8_t brightness, std::string str)
 
 08004e88 <_ZN6TM163712SetBrighnessEh>:
 
-TM1637Status TM1637::SetBrighness(uint8_t brighnessLevel)
-{
+TM1637Status TM1637::SetBrighness(uint8_t brighnessLevel) {
  8004e88:	b580      	push	{r7, lr}
  8004e8a:	b086      	sub	sp, #24
  8004e8c:	af00      	add	r7, sp, #0
@@ -11213,11 +11151,11 @@ TM1637Status TM1637::SetBrighness(uint8_t brighnessLevel)
 	TM1637Status parameterFalidation = TM1637_ERROR;
  8004e9c:	2301      	movs	r3, #1
  8004e9e:	75bb      	strb	r3, [r7, #22]
-	if(brighnessLevel <= 7)												//there are 7 levels of brightness
+	if(brighnessLevel <= 7)	{											//there are 7 levels of brightness
  8004ea0:	78fb      	ldrb	r3, [r7, #3]
  8004ea2:	2b07      	cmp	r3, #7
  8004ea4:	d83c      	bhi.n	8004f20 <_ZN6TM163712SetBrighnessEh+0x98>
-	{																	//Any value above that will be ignored.
+																		//Any value above that will be ignored.
 		brighnessLevel = brighnessLevel | commands[2];					//Set Brightness level with display on command
  8004ea6:	687b      	ldr	r3, [r7, #4]
  8004ea8:	3314      	adds	r3, #20
@@ -11230,13 +11168,12 @@ TM1637Status TM1637::SetBrighness(uint8_t brighnessLevel)
  8004eb8:	4313      	orrs	r3, r2
  8004eba:	70fb      	strb	r3, [r7, #3]
 
-		for(uint8_t i = 0; i < 8; i++)
+		for(uint8_t i = 0; i < 8; i++) {
  8004ebc:	2300      	movs	r3, #0
  8004ebe:	75fb      	strb	r3, [r7, #23]
  8004ec0:	7dfb      	ldrb	r3, [r7, #23]
  8004ec2:	2b07      	cmp	r3, #7
  8004ec4:	d813      	bhi.n	8004eee <_ZN6TM163712SetBrighnessEh+0x66>
-		{
 			brighnessBuffer[i] = (brighnessLevel & (0x01 << i)) && 1;
  8004ec6:	78fa      	ldrb	r2, [r7, #3]
  8004ec8:	7dfb      	ldrb	r3, [r7, #23]
@@ -11251,7 +11188,7 @@ TM1637Status TM1637::SetBrighness(uint8_t brighnessLevel)
  8004ede:	3318      	adds	r3, #24
  8004ee0:	443b      	add	r3, r7
  8004ee2:	f803 2c0c 	strb.w	r2, [r3, #-12]
-		for(uint8_t i = 0; i < 8; i++)
+		for(uint8_t i = 0; i < 8; i++) {
  8004ee6:	7dfb      	ldrb	r3, [r7, #23]
  8004ee8:	3301      	adds	r3, #1
  8004eea:	75fb      	strb	r3, [r7, #23]
@@ -11294,10 +11231,9 @@ TM1637Status TM1637::SetBrighness(uint8_t brighnessLevel)
 
 08004f2a <_ZZN6TM163710FillBufferENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEENKUlRcE_clES6_>:
 
-void TM1637::FillBuffer(std::string str)
-{
+void TM1637::FillBuffer(std::string str) {
 	uint8_t i = 0;
-	std::for_each(str.begin(), str.end(), [this,&i](char& ch)
+	std::for_each(str.begin(), str.end(), [this,&i](char& ch) {
  8004f2a:	b580      	push	{r7, lr}
  8004f2c:	b082      	sub	sp, #8
  8004f2e:	af00      	add	r7, sp, #0
@@ -11305,33 +11241,32 @@ void TM1637::FillBuffer(std::string str)
  8004f32:	6039      	str	r1, [r7, #0]
  8004f34:	687b      	ldr	r3, [r7, #4]
  8004f36:	681b      	ldr	r3, [r3, #0]
-			{
-				displayBuffer[i] = alphabet.at(ch);
+	  displayBuffer[i] = alphabet.at(ch);
  8004f38:	331c      	adds	r3, #28
  8004f3a:	6839      	ldr	r1, [r7, #0]
  8004f3c:	4618      	mov	r0, r3
  8004f3e:	f000 f961 	bl	8005204 <_ZNSt3mapIchSt4lessIcESaISt4pairIKchEEE2atERS3_>
  8004f42:	4601      	mov	r1, r0
-	std::for_each(str.begin(), str.end(), [this,&i](char& ch)
+	std::for_each(str.begin(), str.end(), [this,&i](char& ch) {
  8004f44:	687b      	ldr	r3, [r7, #4]
  8004f46:	681b      	ldr	r3, [r3, #0]
  8004f48:	687a      	ldr	r2, [r7, #4]
  8004f4a:	6852      	ldr	r2, [r2, #4]
-				displayBuffer[i] = alphabet.at(ch);
+	  displayBuffer[i] = alphabet.at(ch);
  8004f4c:	7812      	ldrb	r2, [r2, #0]
  8004f4e:	4610      	mov	r0, r2
  8004f50:	780a      	ldrb	r2, [r1, #0]
  8004f52:	4403      	add	r3, r0
  8004f54:	f883 203e 	strb.w	r2, [r3, #62]	; 0x3e
-	std::for_each(str.begin(), str.end(), [this,&i](char& ch)
+	std::for_each(str.begin(), str.end(), [this,&i](char& ch) {
  8004f58:	687b      	ldr	r3, [r7, #4]
  8004f5a:	685b      	ldr	r3, [r3, #4]
-				++i;
+	  ++i;
  8004f5c:	781a      	ldrb	r2, [r3, #0]
  8004f5e:	3201      	adds	r2, #1
  8004f60:	b2d2      	uxtb	r2, r2
  8004f62:	701a      	strb	r2, [r3, #0]
-			});
+	});
  8004f64:	bf00      	nop
  8004f66:	3708      	adds	r7, #8
  8004f68:	46bd      	mov	sp, r7
@@ -11469,7 +11404,7 @@ void TM1637::FillBuffer(std::string str)
  8005038:	4770      	bx	lr
 
 0800503a <_ZN6TM163710FillBufferENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE>:
-{
+void TM1637::FillBuffer(std::string str) {
  800503a:	b590      	push	{r4, r7, lr}
  800503c:	b08b      	sub	sp, #44	; 0x2c
  800503e:	af02      	add	r7, sp, #8
@@ -11478,7 +11413,7 @@ void TM1637::FillBuffer(std::string str)
 	uint8_t i = 0;
  8005044:	2300      	movs	r3, #0
  8005046:	73fb      	strb	r3, [r7, #15]
-			});
+	});
  8005048:	6838      	ldr	r0, [r7, #0]
  800504a:	f000 f8aa 	bl	80051a2 <_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE5beginEv>
  800504e:	4604      	mov	r4, r0
@@ -13961,13 +13896,12 @@ void TM1637::FillBuffer(std::string str)
 0800612c <_ZN5TIMERC1EP17TIM_HandleTypeDef>:
 #include "Timing.hpp"
 
-TIMER::TIMER(TIM_HandleTypeDef* tim)
+TIMER::TIMER(TIM_HandleTypeDef* tim) {
  800612c:	b580      	push	{r7, lr}
  800612e:	b082      	sub	sp, #8
  8006130:	af00      	add	r7, sp, #0
  8006132:	6078      	str	r0, [r7, #4]
  8006134:	6039      	str	r1, [r7, #0]
-{
 	_tim = tim;
  8006136:	687b      	ldr	r3, [r7, #4]
  8006138:	683a      	ldr	r2, [r7, #0]
@@ -13986,8 +13920,7 @@ TIMER::TIMER(TIM_HandleTypeDef* tim)
 
 08006150 <_ZN5TIMER7delayUSEt>:
 
-void TIMER::delayUS(uint16_t us)
-{
+void TIMER::delayUS(uint16_t us) {
  8006150:	b480      	push	{r7}
  8006152:	b083      	sub	sp, #12
  8006154:	af00      	add	r7, sp, #0

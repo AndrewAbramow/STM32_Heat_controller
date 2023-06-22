@@ -8,10 +8,11 @@
 #ifndef TM1637_HPP_
 #define TM1637_HPP_
 
-#include <stdint.h>
 #include <array>
 #include <map>
 #include <string>
+#include <stdint.h>
+
 #include "stm32f1xx_hal.h"
 
 // https://github.com/UsefulElectronics/stm32-tm1637-library
