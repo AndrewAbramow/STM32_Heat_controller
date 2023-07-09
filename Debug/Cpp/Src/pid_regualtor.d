@@ -1,4 +1,6 @@
-Cpp/Src/ds18b20.o: ../Cpp/Src/ds18b20.cpp \
+Cpp/Src/pid_regualtor.o: ../Cpp/Src/pid_regualtor.cpp \
+ C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/pid_regulator.hpp \
+ C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/adaptive_filter.hpp \
  C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/ds18b20.hpp \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../Core/Inc/stm32f1xx_hal_conf.h \
@@ -24,7 +26,10 @@ Cpp/Src/ds18b20.o: ../Cpp/Src/ds18b20.cpp \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
- C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/Timing.hpp
+ C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/Timing.hpp \
+ C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/relay_output.hpp
+C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/pid_regulator.hpp:
+C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/adaptive_filter.hpp:
 C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/ds18b20.hpp:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 ../Core/Inc/stm32f1xx_hal_conf.h:
@@ -51,3 +56,4 @@ C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/ds18b20.hpp:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
 C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/Timing.hpp:
+C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/relay_output.hpp:

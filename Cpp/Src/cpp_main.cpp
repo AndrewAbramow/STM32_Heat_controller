@@ -1,4 +1,4 @@
-#include "CppMain.hpp"
+#include "cpp_main.hpp"
 
 
 // Main Cpp event loop to run application
@@ -19,7 +19,7 @@ void CppMain()
 	std::shared_ptr<RelayOutput> relay = std::make_shared<RelayOutput>();
 	// initialize controller
 	//OnOffRegulator regulator(30, 1, filter, temp, relay);
-	PID_Regulator regulator(30, 10, filter, temp, relay);
+	PID_Regulator regulator(40, 7, filter, temp, relay);
 
 
 	while(true)

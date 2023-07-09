@@ -12,13 +12,13 @@
 
 #include <string>
 
-#include "AdaptiveFilter.hpp"
-#include "DS18B20.hpp"
-#include "OnOffRegulator.hpp"
-#include "RelayOutput.hpp"
-#include "TM1637.hpp"
-#include "PIDRegulator.hpp"
-#include "Timing.hpp"
+#include "adaptive_filter.hpp"
+#include "ds18b20.hpp"
+#include "on_off_regulator.hpp"
+#include "relay_output.hpp"
+#include "tm1637.hpp"
+#include "pid_regulator.hpp"
+#include "timing.hpp"
 
 extern unsigned char KeyboardReadFlag;
 extern TIM_HandleTypeDef htim2;

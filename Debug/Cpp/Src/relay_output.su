@@ -1,0 +1,5 @@
+../Cpp/Src/relay_output.cpp:10:1:RelayOutput::RelayOutput()	16	static
+../Cpp/Src/relay_output.cpp:17:1:RelayOutput::~RelayOutput()	16	static
+../Cpp/Src/relay_output.cpp:17:1:virtual RelayOutput::~RelayOutput()	16	static
+../Cpp/Src/relay_output.cpp:21:6:void RelayOutput::On()	16	static
+../Cpp/Src/relay_output.cpp:28:6:void RelayOutput::Off()	16	static

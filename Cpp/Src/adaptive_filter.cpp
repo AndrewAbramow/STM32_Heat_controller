@@ -5,7 +5,7 @@
  *      Author: abramov.a
  */
 
-#include <AdaptiveFilter.hpp>
+#include "adaptive_filter.hpp"
 
 AdaptiveFilter::AdaptiveFilter() {
 	current_val = 0;

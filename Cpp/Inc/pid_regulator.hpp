@@ -10,9 +10,9 @@
 
 #include "memory"
 
-#include "AdaptiveFilter.hpp"
-#include "DS18B20.hpp"
-#include "RelayOutput.hpp"
+#include "adaptive_filter.hpp"
+#include "ds18b20.hpp"
+#include "relay_output.hpp"
 
 // https://alexgyver.ru/lessons/pid/
 
@@ -31,18 +31,18 @@ class PID_Regulator {
   float                             Clamp(float value, float min, float max);
  private:
   unsigned char                     target_temp_ = 0;
+  unsigned char                     period_;
   std::shared_ptr<AdaptiveFilter>   filter_;
   std::shared_ptr<DS18B20>          ds18b20_;
   std::shared_ptr<RelayOutput>      relay_;
   int                               dt_ = 1;
   int                               min_out_ = 0;
-  int                               max_out_ = 10;
-  float                             kp_ = 1.8;
-  float                             ki_ = 3.6;
-  float                             kd_ = 0.225;
+  int                               max_out_ = 7;
+  float                             kp_ = 12;
+  float                             ki_ = 0.5;
+  float                             kd_ = 50;
   float                             integral_ = 1;
   float                             prev_err_ = 1;
-  unsigned char                     period_;
   unsigned char                     cool_down_;
   unsigned char                     heat_up_;
   enum Cycle {

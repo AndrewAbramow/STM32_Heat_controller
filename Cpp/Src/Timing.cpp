@@ -1,4 +1,4 @@
-#include "Timing.hpp"
+#include "timing.hpp"
 
 TIMER::TIMER(TIM_HandleTypeDef* tim) {
 	_tim = tim;

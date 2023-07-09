@@ -12,9 +12,9 @@
 
 #include <stdint.h>
 
-#include "AdaptiveFilter.hpp"
-#include "DS18B20.hpp"
-#include "RelayOutput.hpp"
+#include "adaptive_filter.hpp"
+#include "ds18b20.hpp"
+#include "relay_output.hpp"
 
 enum RegulatorMode {
   kHeater,

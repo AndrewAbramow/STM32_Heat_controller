@@ -5,7 +5,7 @@
  *      Author: abramov.a
  */
 
-#include "TM1637.hpp"
+#include "tm1637.hpp"
 
 TM1637::TM1637() {
 	// TODO Auto-generated constructor stub
@@ -183,4 +183,5 @@ void TM1637::FillBuffer(std::string str) {
 	  displayBuffer[i] = alphabet.at(ch);
 	  ++i;
 	});
+	displayBuffer[1] += 0x80;  // 0x80 for adding decimal point
 }

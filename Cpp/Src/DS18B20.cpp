@@ -1,4 +1,4 @@
-#include "DS18B20.hpp"
+#include "ds18b20.hpp"
 
 DS18B20::DS18B20(TIMER *tim) {
 	_tim = tim;

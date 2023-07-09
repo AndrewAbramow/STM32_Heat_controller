@@ -1,5 +1,5 @@
-Cpp/Src/ds18b20.o: ../Cpp/Src/ds18b20.cpp \
- C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/ds18b20.hpp \
+Cpp/Src/relay_output.o: ../Cpp/Src/relay_output.cpp \
+ C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/relay_output.hpp \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../Core/Inc/stm32f1xx_hal_conf.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
@@ -23,9 +23,8 @@ Cpp/Src/ds18b20.o: ../Cpp/Src/ds18b20.cpp \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
- ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
- C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/Timing.hpp
-C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/ds18b20.hpp:
+ ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
+C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/relay_output.hpp:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 ../Core/Inc/stm32f1xx_hal_conf.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:
@@ -50,4 +49,3 @@ C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/ds18b20.hpp:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
-C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/Timing.hpp:

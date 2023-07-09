@@ -5,7 +5,7 @@
  *      Author: abramov.a
  */
 
-#include "RelayOutput.hpp"
+#include "relay_output.hpp"
 
 RelayOutput::RelayOutput() {
 

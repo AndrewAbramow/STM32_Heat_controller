@@ -5,7 +5,7 @@
  *      Author: abramov.a
  */
 
-#include "OnOffRegulator.hpp"
+#include "on_off_regulator.hpp"
 
 OnOffRegulator::OnOffRegulator(	uint8_t target_temp,
     uint8_t hysteresis,
@@ -23,7 +23,7 @@ OnOffRegulator::~OnOffRegulator() {
 }
 
 float OnOffRegulator::GetTemperature() {
-	return filter_->RenewVal(ds18b20_->readTemperature());
+  return filter_->RenewVal(ds18b20_->readTemperature());
 }
 
 void OnOffRegulator::TemperatureSupport(RegulatorMode regulator_mode) {
@@ -35,22 +35,22 @@ void OnOffRegulator::TemperatureSupport(RegulatorMode regulator_mode) {
 		relay_ -> On();
 		regulator_state_ = kRegulatorOn;
 	} else if ((temp >= (target_temp_ + hysteresis_))
-		&& regulator_state_ == kRegulatorOn) {
-		// Heater OFF
-		relay_ -> Off();
-		regulator_state_ = kRegulatorOff;
+	  && regulator_state_ == kRegulatorOn) {
+	  // Heater OFF
+	  relay_ -> Off();
+	  regulator_state_ = kRegulatorOff;
 	}
   } else if (regulator_mode == kCooler)	{
     if ((temp > (target_temp_ + hysteresis_))
-		&& regulator_state_ == kRegulatorOff) {
-		// Cooler ON
-		relay_ -> On();
-		regulator_state_ = kRegulatorOn;
+	  && regulator_state_ == kRegulatorOff) {
+	  // Cooler ON
+      relay_ -> On();
+	  regulator_state_ = kRegulatorOn;
     } else if ((temp < (target_temp_ - hysteresis_))
-		&& regulator_state_ == kRegulatorOn) {
-		// Cooler OFF
-		relay_ -> Off();
-		regulator_state_ = kRegulatorOff;
+	  && regulator_state_ == kRegulatorOn) {
+	  // Cooler OFF
+	  relay_ -> Off();
+	  regulator_state_ = kRegulatorOff;
     }
   }
 }

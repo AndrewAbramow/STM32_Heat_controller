@@ -5,7 +5,7 @@
  *      Author: abramov.a
  */
 
-#include "HS42056.hpp"
+#include "hs42056.hpp"
 
 HS42056::HS42056() {
 	// TODO Auto-generated constructor stub
