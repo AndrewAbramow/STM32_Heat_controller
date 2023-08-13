@@ -12,9 +12,9 @@
 ## Features
 
 - ON-OFF regulator
-![Alt text](Docs/ON_OFF.jpg)
+![Alt text](Docs/ON_OFF.png)
 - PID regulator
-![Alt text](Docs/PID.jpg)
+![Alt text](Docs/PID.png)
 - Adaptive filter
 
 ## Project goal
