@@ -40,7 +40,6 @@ class PID_Regulator {
   int                               dt_ = 10;
   int                               min_out_ = 0;
   int                               max_out_ = 10;
-  int								call_count = 0;
   float                             kp_ = 3;
   float                             ki_ = 0.3;
   float                             kd_ = 30;
@@ -48,6 +47,7 @@ class PID_Regulator {
   float                             prev_err_ = 0;
   int                     			cool_down_;
   int			                    heat_up_;
+  int 								hysteresis_ = 1;
   enum Cycle {
 		kOff,
 		kOn

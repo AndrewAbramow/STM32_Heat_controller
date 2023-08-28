@@ -48,13 +48,13 @@ int PID_Regulator::GetNewWidth (float input) {
 void PID_Regulator::TemperatureSupport(float current_temp) {
   // calling this function in CppMain every second
   // regulation range: 1-10 sec
-
   if (cycle_ == kOff) {  // start new cycle
-      heat_up_ = GetNewWidth(current_temp);  // heating time (sec)
+	if (current_temp <= target_temp_ - hysteresis_) {  // insensitive zone = +-1
+      heat_up_ = GetNewWidth(current_temp + hysteresis_);  // heating time (sec)
       cool_down_ = period_ - heat_up_;  // cooling time (sec)
       cycle_ = kOn;
       stage_ = kCoolDown;
-      call_count = 0; // call count must be equal to dt
+	}
   }
   if(cycle_ == kOn) {
     if (stage_ == kCoolDown) {  // cooling
