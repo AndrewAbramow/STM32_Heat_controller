@@ -11,10 +11,12 @@
 
 ## Features
 
+![Alt text](Docs/ON_OFF.png)
 - ON-OFF regulator
-![Alt text](Docs/ON_OFF.jpg)
+
+![Alt text](Docs/PID.png)
 - PID regulator
-![Alt text](Docs/PID.jpg)
+
 - Adaptive filter
 
 ## Project goal
@@ -23,7 +25,7 @@ Design relatively cheap heat cotroller
 
 ## Tech
 
-- [Adaptive filter implementation](https://alexgyver.ru/lessons/pid/)
+- [Adaptive filter implementation](https://alexgyver.ru/lessons/filters/)
 
 - [DS18B20](https://github.com/vtx22/STM32-DS18B20)
 
