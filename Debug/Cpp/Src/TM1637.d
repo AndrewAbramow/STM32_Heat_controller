@@ -1,5 +1,5 @@
 Cpp/Src/tm1637.o: ../Cpp/Src/tm1637.cpp \
- C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/tm1637.hpp \
+ C:/Users/Andrew/Documents/MyProjects/STM32_Heat_controller/Cpp/Inc/tm1637.hpp \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../Core/Inc/stm32f1xx_hal_conf.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
@@ -24,7 +24,7 @@ Cpp/Src/tm1637.o: ../Cpp/Src/tm1637.cpp \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
-C:/Users/Andrew/Documents/MyProjects/STM32_PLC/Cpp/Inc/tm1637.hpp:
+C:/Users/Andrew/Documents/MyProjects/STM32_Heat_controller/Cpp/Inc/tm1637.hpp:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 ../Core/Inc/stm32f1xx_hal_conf.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:

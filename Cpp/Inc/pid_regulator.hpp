@@ -29,22 +29,25 @@ class PID_Regulator {
   int                               GetNewWidth (float input);
   void                              TemperatureSupport(float current_temp);
   float                             Clamp(float value, float min, float max);
+  float								Map(float val, float in_min, float in_max,
+		  	  	  	  	  	  	  		float out_min, float out_max);
  private:
-  unsigned char                     target_temp_ = 0;
-  unsigned char                     period_;
+  int			                    target_temp_ = 0;
+  int			                    period_;
   std::shared_ptr<AdaptiveFilter>   filter_;
   std::shared_ptr<DS18B20>          ds18b20_;
   std::shared_ptr<RelayOutput>      relay_;
-  int                               dt_ = 1;
+  int                               dt_ = 10;
   int                               min_out_ = 0;
-  int                               max_out_ = 7;
-  float                             kp_ = 12;
-  float                             ki_ = 0.5;
-  float                             kd_ = 50;
-  float                             integral_ = 1;
-  float                             prev_err_ = 1;
-  unsigned char                     cool_down_;
-  unsigned char                     heat_up_;
+  int                               max_out_ = 10;
+  int								call_count = 0;
+  float                             kp_ = 3;
+  float                             ki_ = 0.3;
+  float                             kd_ = 30;
+  float                             integral_ = 0;
+  float                             prev_err_ = 0;
+  int                     			cool_down_;
+  int			                    heat_up_;
   enum Cycle {
 		kOff,
 		kOn
