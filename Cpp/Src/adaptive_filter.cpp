@@ -8,8 +8,8 @@
 #include "adaptive_filter.hpp"
 
 AdaptiveFilter::AdaptiveFilter() {
-	current_val = 0;
-	k           = 1;
+	current_val_ = 0;
+	k_           = 1;
 }
 
 AdaptiveFilter::~AdaptiveFilter() {
@@ -17,8 +17,8 @@ AdaptiveFilter::~AdaptiveFilter() {
 }
 
 float AdaptiveFilter::RenewVal(float new_val) {
-	if (abs(new_val - current_val) > 1.5) k = 0.9;
-	else k = 0.03;
-	current_val += (new_val - current_val) * k;
-	return current_val;
+	if (abs(new_val - current_val_) > 1.5) k_ = 0.9;
+	else k_ = 0.03;
+	current_val_ += (new_val - current_val_) * k_;
+	return current_val_;
 }

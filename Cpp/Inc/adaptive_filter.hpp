@@ -17,8 +17,8 @@ class AdaptiveFilter {
 
   float     RenewVal(float newVal);
  private:
-  float     current_val;
-  float     k;
+  float     current_val_;
+  float     k_;
 };
 
 #endif /* DIGITALFILTER_HPP_ */

@@ -41,7 +41,7 @@ extern "C" {
 
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
-
+//unsigned char KeyboardReadFlag = 0;
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/
