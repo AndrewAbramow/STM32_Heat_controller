@@ -8,8 +8,8 @@
 ## Additional devices
 
 - DS18B20 input (temperature)
+- NTC Thermistor input (temperature)
 - SRD-05VDC relay output
-- NTC Thermistor
 
 ## Features
 
