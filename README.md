@@ -1,9 +1,6 @@
 # STM32_Heat_controller
 
 ## Oversimplified version of TRM1 (heat controller) based on STM32F103C8. 
-
-![Alt text](Docs/Heat_controller.jpg)
-
 ## Video demonstration
 
 [Youtube](https://youtu.be/MHSAD7J2xEI)
