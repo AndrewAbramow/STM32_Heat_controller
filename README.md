@@ -4,10 +4,15 @@
 
 ![Alt text](Docs/Heat_controller.jpg)
 
+## Video demonstration
+
+[Youtube](https://youtu.be/MHSAD7J2xEI)
+
 ## Additional devices
 
 - DS18B20 input (temperature)
 - SRD-05VDC relay output
+- NTC Thermistor
 
 ## Features
 
@@ -33,6 +38,8 @@ Design relatively cheap heat cotroller
 
 - [TM1637](https://github.com/UsefulElectronics/stm32-tm1637-library)
 
+- [GyverNTC](https://github.com/GyverLibs/GyverNTC)
+
 ## Requirements
 
 STM32CubeIDE 1.11.0 or higher
@@ -41,7 +48,3 @@ STM32CubeIDE 1.11.0 or higher
 
 ![Alt text](Docs/Structure.png)
 ![Alt text](Docs/Scheme.png)
-
-## Documentation
-
-[by Doxygen](Docs)
